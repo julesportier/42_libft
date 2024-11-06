@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/06 13:24:46 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:55:17 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,39 @@ void	test_ft_bzero(void *s, size_t n)
 	write(1, "\n", 1);
 }
 
+void	test_ft_memcpy()
+{
+	char	src[] = "0123456";
+	char	src2[] = "0123456";
+	char	dest[] = "abcdefg";
+	char	dest2[] = "abcdefg";
+	ft_memcpy(dest, src, 7);
+	printf("%s\n", dest);
+	memcpy(dest2, src2, 7);
+	printf("%s\n", dest2);
+	ft_memcpy(dest + 2, dest, 7);
+	printf("%s\n", dest);
+	memcpy(dest2 + 2, dest2, 7);
+	printf("%s\n", dest2);
+	printf("\n");
+}
+
 int	main(int argc, char *argv[])
 {
 	if (argc > 1)
 	{
-		test_ft_isalpha(argv[1][0]);
-		test_ft_isascii(argv[1][0]);
+		//test_ft_isalpha(argv[1][0]);
+		//test_ft_isascii(argv[1][0]);
 		//test_ft_isprint(argv[1][0]);
-		test_ft_strlen(argv[1]);
-		test_ft_memset(argv[1], 'a', 2);
-		test_ft_bzero(argv[1], 2);
+		//test_ft_strlen(argv[1]);
+		//test_ft_memset(argv[1], 'a', 2);
+		//test_ft_bzero(argv[1], 2);
+		test_ft_memcpy();
 		return (0);
 	}
 	else
+	{
+		printf("argv[0] == %s\n", argv[0]);
 		return (1);
+	}
 }
