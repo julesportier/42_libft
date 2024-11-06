@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/06 15:55:17 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 16:12:19 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ void	test_ft_memcpy()
 	printf("%s\n", dest);
 	memcpy(dest2, src2, 7);
 	printf("%s\n", dest2);
-	ft_memcpy(dest + 2, dest, 7);
-	printf("%s\n", dest);
-	memcpy(dest2 + 2, dest2, 7);
-	printf("%s\n", dest2);
+	//ft_memcpy(dest + 2, dest, 7);
+	//printf("%s\n", dest);
+	//memcpy(dest2 + 2, dest2, 7);
+	//printf("%s\n", dest2);
 	printf("\n");
 }
 
@@ -114,7 +114,8 @@ int	main(int argc, char *argv[])
 		//test_ft_strlen(argv[1]);
 		//test_ft_memset(argv[1], 'a', 2);
 		//test_ft_bzero(argv[1], 2);
-		test_ft_memcpy();
+		//test_ft_memcpy();
+		ft_putchar_fd('a', 1);
 		return (0);
 	}
 	else
