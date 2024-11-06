@@ -6,12 +6,13 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/05 16:45:03 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 13:24:46 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+#include <unistd.h>
 #include <ctype.h>
 #include <string.h>
 
@@ -56,6 +57,36 @@ void	test_ft_strlen(const char *s)
 	printf("\n");
 }
 
+void	test_ft_memset(void *s, int c, size_t n)
+{
+	char	*mem;
+	char	*cmem;
+	char	*cs;
+
+	cs = strdup(s);
+	mem = ft_memset(s, c, n);
+	printf("%s\n", (char *)mem);
+	cmem = memset(cs, c, n);
+	printf("%s\n", (char *)cmem);
+	printf("\n");
+}
+
+void	test_ft_bzero(void *s, size_t n)
+{
+	char	*cs;
+
+	cs = strdup(s);
+	ft_bzero(s, n);
+	write(1, (char *)s, 5);
+	write(1, "\n", 1);
+	char	test[] = "estest\0";
+	write(1, test, 5);
+	write(1, "\n", 1);
+	bzero(cs, n);
+	write(1, (char *)cs, 5);
+	write(1, "\n", 1);
+}
+
 int	main(int argc, char *argv[])
 {
 	if (argc > 1)
@@ -64,6 +95,8 @@ int	main(int argc, char *argv[])
 		test_ft_isascii(argv[1][0]);
 		//test_ft_isprint(argv[1][0]);
 		test_ft_strlen(argv[1]);
+		test_ft_memset(argv[1], 'a', 2);
+		test_ft_bzero(argv[1], 2);
 		return (0);
 	}
 	else
