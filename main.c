@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/06 16:12:19 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/06 16:25:08 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ int	main(int argc, char *argv[])
 		//test_ft_bzero(argv[1], 2);
 		//test_ft_memcpy();
 		ft_putchar_fd('a', 1);
+		ft_putstr_fd("put str\n", 1);
 		return (0);
 	}
 	else
