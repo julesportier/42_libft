@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/07 15:17:54 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:21:09 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <ctype.h>
-#include <string.h>
+#include <bsd/string.h>
 
 void	test_ft_isalpha(int c)
 {
@@ -125,6 +125,28 @@ void	test_ft_memmove()
 	printf("\n");
 }
 
+void	test_ft_strlcpy()
+{
+	char	src[] = "012";
+	char	dst[] = "abcdefg";
+	char	src2[] = "012";
+	char	dst2[] = "abcdefg";
+	int	size = 5;
+
+	size_t	ft_ret = ft_strlcpy(dst, src, size);
+	write(1, dst, 7);
+	write(1, "\n", 1);
+	ft_ret += '0';
+	write(1, &ft_ret, 1);
+	write(1, "\n", 1);
+	size_t	cl_ret = strlcpy(dst2, src2, size);
+	write(1, dst2, 7);
+	write(1, "\n", 1);
+	cl_ret += '0';
+	write(1, &cl_ret, 1);
+	write(1, "\n", 1);
+}
+
 int	main(int argc, char *argv[])
 {
 	if (argc > 1)
@@ -135,8 +157,9 @@ int	main(int argc, char *argv[])
 		//test_ft_strlen(argv[1]);
 		//test_ft_memset(argv[1], 'a', 2);
 		//test_ft_bzero(argv[1], 2);
-		test_ft_memcpy();
-		test_ft_memmove();
+		//test_ft_memcpy();
+		//test_ft_memmove();
+		test_ft_strlcpy();
 		//ft_putchar_fd('a', 1);
 		//ft_putstr_fd("put str\n", 1);
 		//ft_putendl_fd("putendl", 1);
