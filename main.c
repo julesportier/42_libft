@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/06 16:32:26 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:17:54 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,18 +89,39 @@ void	test_ft_bzero(void *s, size_t n)
 
 void	test_ft_memcpy()
 {
-	char	src[] = "0123456";
-	char	src2[] = "0123456";
+	//char	src[] = "0123456";
+	//char	src2[] = "0123456";
 	char	dest[] = "abcdefg";
+	//char	pad[] = "padpadpad";
 	char	dest2[] = "abcdefg";
-	ft_memcpy(dest, src, 7);
-	printf("%s\n", dest);
-	memcpy(dest2, src2, 7);
-	printf("%s\n", dest2);
-	//ft_memcpy(dest + 2, dest, 7);
+	//ft_memcpy(dest, src, 7);
 	//printf("%s\n", dest);
-	//memcpy(dest2 + 2, dest2, 7);
+	//memcpy(dest2, src2, 7);
 	//printf("%s\n", dest2);
+	ft_memcpy(dest + 2, dest, 5);
+	ft_putendl_fd(dest, 1);
+	//ft_putendl_fd(pad, 1);
+	memcpy(dest2 + 2, dest2, 5);
+	ft_putendl_fd(dest2, 1);
+	printf("\n");
+}
+
+void	test_ft_memmove()
+{
+	//char	src[] = "0123456";
+	//char	src2[] = "0123456";
+	char	dest[] = "abcdefg";
+	//char	pad[] = "padpadpad";
+	char	dest2[] = "abcdefg";
+	//ft_memmove(dest, src, 7);
+	//printf("%s\n", dest);
+	//memmove(dest2, src2, 7);
+	//printf("%s\n", dest2);
+	ft_memmove(dest + 4, dest, 3);
+	ft_putendl_fd(dest, 1);
+	//ft_putendl_fd(pad, 1);
+	memmove(dest2 + 4, dest2, 3);
+	ft_putendl_fd(dest2, 1);
 	printf("\n");
 }
 
@@ -114,10 +135,11 @@ int	main(int argc, char *argv[])
 		//test_ft_strlen(argv[1]);
 		//test_ft_memset(argv[1], 'a', 2);
 		//test_ft_bzero(argv[1], 2);
-		//test_ft_memcpy();
-		ft_putchar_fd('a', 1);
-		ft_putstr_fd("put str\n", 1);
-		ft_putendl_fd("putendl", 1);
+		test_ft_memcpy();
+		test_ft_memmove();
+		//ft_putchar_fd('a', 1);
+		//ft_putstr_fd("put str\n", 1);
+		//ft_putendl_fd("putendl", 1);
 		return (0);
 	}
 	else
