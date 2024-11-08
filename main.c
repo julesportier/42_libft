@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/08 14:13:50 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:25:29 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,12 @@ void	test_ft_memcmp(const void *s1, const void *s2, size_t n)
 	printf("memcmp: %d\n", memcmp(s1, s2, n));
 }
 
+void	test_ft_strnstr (const char *big, const char *little, size_t len)
+{
+	printf("ft_strnstr: %s\n", ft_strnstr(big, little, len));
+	printf("strnstr: %s\n", strnstr(big, little, len));
+}
+
 int	main(int argc, char *argv[])
 {
 	if (argc > 1)
@@ -245,7 +251,8 @@ int	main(int argc, char *argv[])
 		//test_ft_strrchr(argv[1], '\0');
 		//test_ft_strncmp(argv[1], argv[2], 8);
 		//test_ft_memchr();
-		test_ft_memcmp(argv[1], argv[2], -10);
+		//test_ft_memcmp(argv[1], argv[2], -10);
+		test_ft_strnstr(argv[1], argv[2], 15);
 		//ft_putchar_fd('a', 1);
 		//ft_putstr_fd("put str\n", 1);
 		//ft_putendl_fd("putendl", 1);
