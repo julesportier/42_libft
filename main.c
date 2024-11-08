@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/08 11:07:45 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/08 11:27:23 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,14 @@ void	test_ft_strncmp(const char *s1, const char *s2, size_t n)
 	printf("strncmp: %d\n", strncmp(s1, s2, n));
 }
 
+void	test_ft_memchr()
+{
+	int	size = 7;
+	int	chr = 'x';
+	printf("ft_memchr: %s\n", (char *)ft_memchr("test", chr, size));
+	printf("memchr: %s\n", (char *)memchr("test", chr, size));
+}
+
 int	main(int argc, char *argv[])
 {
 	if (argc > 1)
@@ -230,6 +238,7 @@ int	main(int argc, char *argv[])
 		//test_ft_strrchr(argv[1], argv[2][0]);
 		//test_ft_strrchr(argv[1], '\0');
 		test_ft_strncmp(argv[1], argv[2], 8);
+		test_ft_memchr();
 		//ft_putchar_fd('a', 1);
 		//ft_putstr_fd("put str\n", 1);
 		//ft_putendl_fd("putendl", 1);
