@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/08 08:17:11 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/08 08:37:18 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,12 @@ void	test_ft_strlcat()
 	//write(1, "\n", 1);
 }
 
+void	test_ft_toupper(int c)
+{
+	printf("%c\n", ft_toupper(c));
+	printf("%c\n", toupper(c));
+}
+
 int	main(int argc, char *argv[])
 {
 	if (argc > 1)
@@ -183,7 +189,8 @@ int	main(int argc, char *argv[])
 		//test_ft_memcpy();
 		//test_ft_memmove();
 		//test_ft_strlcpy();
-		test_ft_strlcat();
+		//test_ft_strlcat();
+		test_ft_toupper(argv[1][0]);
 		//ft_putchar_fd('a', 1);
 		//ft_putstr_fd("put str\n", 1);
 		//ft_putendl_fd("putendl", 1);
