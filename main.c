@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/08 09:48:02 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/08 11:07:45 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,13 @@ void	test_ft_strrchr(const char *s, int c)
 	write(1, strrchr(s, c), 10);
 	write(1, "\n", 1);
 }
+
+void	test_ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	printf("ft_strncmp: %d\n", ft_strncmp(s1, s2, n));
+	printf("strncmp: %d\n", strncmp(s1, s2, n));
+}
+
 int	main(int argc, char *argv[])
 {
 	if (argc > 1)
@@ -220,8 +227,9 @@ int	main(int argc, char *argv[])
 		//test_ft_tolower(argv[1][0]);
 		//test_ft_strchr(argv[1], argv[2][0]);
 		//test_ft_strchr(argv[1], '\0');
-		test_ft_strrchr(argv[1], argv[2][0]);
-		test_ft_strrchr(argv[1], '\0');
+		//test_ft_strrchr(argv[1], argv[2][0]);
+		//test_ft_strrchr(argv[1], '\0');
+		test_ft_strncmp(argv[1], argv[2], 8);
 		//ft_putchar_fd('a', 1);
 		//ft_putstr_fd("put str\n", 1);
 		//ft_putendl_fd("putendl", 1);
