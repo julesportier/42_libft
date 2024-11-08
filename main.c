@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/08 09:07:18 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/08 09:48:02 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <ctype.h>
+#include <string.h>
 #include <bsd/string.h>
 
 void	test_ft_isalpha(int c)
@@ -192,6 +193,15 @@ void	test_ft_strchr(const char *s, int c)
 	write(1, "\n", 1);
 }
 
+void	test_ft_strrchr(const char *s, int c)
+{
+	//printf("%s\n", ft_strrchr(s, c));
+	//printf("%s\n", strrchr(s, c));
+	write(1, ft_strrchr(s, c), 10);
+	write(1, "\n", 1);
+	write(1, strrchr(s, c), 10);
+	write(1, "\n", 1);
+}
 int	main(int argc, char *argv[])
 {
 	if (argc > 1)
@@ -208,8 +218,10 @@ int	main(int argc, char *argv[])
 		//test_ft_strlcat();
 		//test_ft_toupper(argv[1][0]);
 		//test_ft_tolower(argv[1][0]);
-		test_ft_strchr(argv[1], argv[2][0]);
-		test_ft_strchr(argv[1], '\0');
+		//test_ft_strchr(argv[1], argv[2][0]);
+		//test_ft_strchr(argv[1], '\0');
+		test_ft_strrchr(argv[1], argv[2][0]);
+		test_ft_strrchr(argv[1], '\0');
 		//ft_putchar_fd('a', 1);
 		//ft_putstr_fd("put str\n", 1);
 		//ft_putendl_fd("putendl", 1);
