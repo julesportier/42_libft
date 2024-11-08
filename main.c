@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/07 17:21:09 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/08 08:17:11 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,29 @@ void	test_ft_strlcpy()
 	write(1, "\n", 1);
 }
 
+void	test_ft_strlcat()
+{
+	char	src[3] = {30,31,32};
+	//char	dst[] = "test ";
+	char	dst[4] = {'t','e','s','t'};
+	//char	src2[3] = {30,31,32};
+	//char	dst2[4] = {'t','e','s','t'};
+	int	size = 3;
+
+	size_t	ft_ret = ft_strlcat(dst, src, size);
+	write(1, dst, 10);
+	write(1, "\n", 1);
+	ft_ret += '0';
+	write(1, &ft_ret, 1);
+	write(1, "\n", 1);
+	//size_t	cl_ret = strlcat(dst, src, size);
+	//write(1, dst, 10);
+	//write(1, "\n", 1);
+	//cl_ret += '0';
+	//write(1, &cl_ret, 1);
+	//write(1, "\n", 1);
+}
+
 int	main(int argc, char *argv[])
 {
 	if (argc > 1)
@@ -159,7 +182,8 @@ int	main(int argc, char *argv[])
 		//test_ft_bzero(argv[1], 2);
 		//test_ft_memcpy();
 		//test_ft_memmove();
-		test_ft_strlcpy();
+		//test_ft_strlcpy();
+		test_ft_strlcat();
 		//ft_putchar_fd('a', 1);
 		//ft_putstr_fd("put str\n", 1);
 		//ft_putendl_fd("putendl", 1);
