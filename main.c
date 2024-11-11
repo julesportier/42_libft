@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/08 15:25:29 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:56:34 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,27 +126,27 @@ void	test_ft_memmove()
 	printf("\n");
 }
 
-void	test_ft_strlcpy()
-{
-	char	src[] = "012";
-	char	dst[] = "abcdefg";
-	char	src2[] = "012";
-	char	dst2[] = "abcdefg";
-	int	size = 5;
-
-	size_t	ft_ret = ft_strlcpy(dst, src, size);
-	write(1, dst, 7);
-	write(1, "\n", 1);
-	ft_ret += '0';
-	write(1, &ft_ret, 1);
-	write(1, "\n", 1);
-	size_t	cl_ret = strlcpy(dst2, src2, size);
-	write(1, dst2, 7);
-	write(1, "\n", 1);
-	cl_ret += '0';
-	write(1, &cl_ret, 1);
-	write(1, "\n", 1);
-}
+//void	test_ft_strlcpy()
+//{
+//	char	src[] = "012";
+//	char	dst[] = "abcdefg";
+//	char	src2[] = "012";
+//	char	dst2[] = "abcdefg";
+//	int	size = 5;
+//
+//	size_t	ft_ret = ft_strlcpy(dst, src, size);
+//	write(1, dst, 7);
+//	write(1, "\n", 1);
+//	ft_ret += '0';
+//	write(1, &ft_ret, 1);
+//	write(1, "\n", 1);
+//	size_t	cl_ret = strlcpy(dst2, src2, size);
+//	write(1, dst2, 7);
+//	write(1, "\n", 1);
+//	cl_ret += '0';
+//	write(1, &cl_ret, 1);
+//	write(1, "\n", 1);
+//}
 
 void	test_ft_strlcat()
 {
@@ -223,10 +223,19 @@ void	test_ft_memcmp(const void *s1, const void *s2, size_t n)
 	printf("memcmp: %d\n", memcmp(s1, s2, n));
 }
 
-void	test_ft_strnstr (const char *big, const char *little, size_t len)
+//void	test_ft_strnstr (const char *big, const char *little, size_t len)
+//{
+//	printf("ft_strnstr: %s\n", ft_strnstr(big, little, len));
+//	printf("strnstr: %s\n", strnstr(big, little, len));
+//}
+
+void	test_ft_atoi(const char *nptr)
 {
-	printf("ft_strnstr: %s\n", ft_strnstr(big, little, len));
-	printf("strnstr: %s\n", strnstr(big, little, len));
+	int	atoi_str;
+	int	ft_atoi_str;
+
+	atoi_str = printf("atoi: %d\n", atoi(nptr));
+	ft_atoi_str = printf("ft_atoi: %d\n", ft_atoi(nptr));
 }
 
 int	main(int argc, char *argv[])
@@ -252,7 +261,9 @@ int	main(int argc, char *argv[])
 		//test_ft_strncmp(argv[1], argv[2], 8);
 		//test_ft_memchr();
 		//test_ft_memcmp(argv[1], argv[2], -10);
-		test_ft_strnstr(argv[1], argv[2], 15);
+		//test_ft_strnstr(argv[1], argv[2], 15);
+		test_ft_atoi("      \n\t\v\f\r -9223372036854775806");
+		//test_ft_atoi("  -2147483649");
 		//ft_putchar_fd('a', 1);
 		//ft_putstr_fd("put str\n", 1);
 		//ft_putendl_fd("putendl", 1);
