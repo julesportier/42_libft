@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/11 13:10:51 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/11 13:19:15 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,6 +271,14 @@ void	test_ft_substr(const char *s, unsigned int start, size_t len)
 	printf("ft_substr: %s\nft_substr adress: %p\n", sub, sub);
 }
 
+void	test_ft_strjoin(const char *s1, const char *s2)
+{
+	char	*joined;
+
+	printf("s1 address: %p\n", s1);
+	joined = ft_strjoin(s1, s2);
+	printf("ft_strjoin: %s\nft_strjoin adress: %p\n", joined, joined);
+}
 int	main(int argc, char *argv[])
 {
 	if (argc > 1)
@@ -300,7 +308,8 @@ int	main(int argc, char *argv[])
 		//test_ft_calloc(2147483640, 1);
 		//test_ft_calloc(5000000000, 1);
 		//test_ft_strdup(argv[1]);
-		test_ft_substr(argv[1], 3, 6);
+		//test_ft_substr(argv[1], 3, 6);
+		test_ft_strjoin(argv[1], argv[2]);
 		//ft_putchar_fd('a', 1);
 		//ft_putstr_fd("put str\n", 1);
 		//ft_putendl_fd("putendl", 1);
