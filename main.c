@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/11 10:56:34 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/11 12:45:45 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,6 +238,18 @@ void	test_ft_atoi(const char *nptr)
 	ft_atoi_str = printf("ft_atoi: %d\n", ft_atoi(nptr));
 }
 
+void	test_ft_calloc(size_t nmemb, size_t size)
+{
+	//printf("calloc ret: %s\n", (char *)calloc(nmemb, size));
+	ft_putstr_fd("calloc: ", 1);
+	ft_putchar_fd(*(char *)calloc(nmemb, size), 1);
+	ft_putchar_fd('\n', 1);
+	ft_putstr_fd("ft_calloc: ", 1);
+	// the true calloc return NULL if nmemb * size < 0, not mine
+	ft_putchar_fd(*(char *)ft_calloc(nmemb, size), 1);
+	ft_putchar_fd('\n', 1);
+}
+
 int	main(int argc, char *argv[])
 {
 	if (argc > 1)
@@ -262,8 +274,10 @@ int	main(int argc, char *argv[])
 		//test_ft_memchr();
 		//test_ft_memcmp(argv[1], argv[2], -10);
 		//test_ft_strnstr(argv[1], argv[2], 15);
-		test_ft_atoi("      \n\t\v\f\r -9223372036854775806");
+		//test_ft_atoi("      \n\t\v\f\r -9223372036854775806");
 		//test_ft_atoi("  -2147483649");
+		//test_ft_calloc(2147483640, 1);
+		test_ft_calloc(5000000000, 1);
 		//ft_putchar_fd('a', 1);
 		//ft_putstr_fd("put str\n", 1);
 		//ft_putendl_fd("putendl", 1);
