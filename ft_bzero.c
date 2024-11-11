@@ -6,11 +6,11 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:14:19 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/06 12:18:50 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:28:42 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
