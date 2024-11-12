@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/11 16:25:46 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:03:40 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,6 +305,14 @@ void	test_ft_split(char const *s, char c, size_t splits_nbr)
 	splits = NULL;
 }
 
+void	test_ft_itoa(int n)
+{
+	char	*str;
+
+	str = ft_itoa(n);
+	printf("itoa %d -> %s\n", n, str);
+}
+
 int	main(int argc, char *argv[])
 {
 	if (argc > 1)
@@ -337,7 +345,9 @@ int	main(int argc, char *argv[])
 		//test_ft_substr(argv[1], 3, 6);
 		//test_ft_strjoin(argv[1], argv[2]);
 		//test_ft_strtrim(argv[1], argv[2]);
-		test_ft_split(argv[1], argv[2][0], 7);
+		//test_ft_split(argv[1], argv[2][0], 7);
+		test_ft_itoa(atoi(argv[1]));
+		test_ft_itoa(-2540090);
 		//ft_putchar_fd('a', 1);
 		//ft_putstr_fd("put str\n", 1);
 		//ft_putendl_fd("putendl", 1);
