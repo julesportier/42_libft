@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/12 13:40:06 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:26:05 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -313,9 +313,9 @@ void	test_ft_itoa(int n)
 	printf("itoa %d -> %s\n", n, str);
 }
 
-void	test_ft_strnmapi(char const *s, char (*f)(unsigned int, char))
+void	test_ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	printf("strnmapi(%s, f) -> %s\n", s, ft_strnmapi(s, f));
+	printf("strmapi(%s, f) -> %s\n", s, ft_strmapi(s, f));
 }
 char	p_func_map(unsigned int i, char c)
 {
@@ -369,7 +369,7 @@ int	main(int argc, char *argv[])
 		//test_ft_split(argv[1], argv[2][0], 7);
 		//test_ft_itoa(atoi(argv[1]));
 		//test_ft_itoa(-2540090);
-		//test_ft_strnmapi(argv[1], p_func_map);
+		//test_ft_strmapi(argv[1], p_func_map);
 		//test_ft_striteri(argv[1], p_func_iter);
 		//ft_putchar_fd('a', 1);
 		//ft_putstr_fd("put str\n", 1);
