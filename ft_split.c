@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:12:13 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/11 16:24:44 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:14:13 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,17 @@ char	*make_split(char const *s, char c, size_t start)
 	return (split);
 }
 
+char	**free_splits(char **array, size_t pos)
+{
+	while (pos)
+	{
+		free(array[pos]);
+		array[pos] = NULL;
+		pos--;
+	}
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	size_t	array_size;
@@ -90,6 +101,8 @@ char	**ft_split(char const *s, char c)
 	{
 		split_len = get_split_len(s, c, s_pos);
 		array[array_pos] = make_split(s, c, s_pos);
+		if (array[array_pos] == NULL)
+			return (free_splits(array, array_pos));
 		s_pos = s_pos + split_len + 1;
 		while (s[s_pos] == c)
 			s_pos++;
