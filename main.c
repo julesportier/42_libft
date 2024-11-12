@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/12 11:54:46 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:40:06 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -369,11 +369,12 @@ int	main(int argc, char *argv[])
 		//test_ft_split(argv[1], argv[2][0], 7);
 		//test_ft_itoa(atoi(argv[1]));
 		//test_ft_itoa(-2540090);
-		test_ft_strnmapi(argv[1], p_func_map);
-		test_ft_striteri(argv[1], p_func_iter);
+		//test_ft_strnmapi(argv[1], p_func_map);
+		//test_ft_striteri(argv[1], p_func_iter);
 		//ft_putchar_fd('a', 1);
 		//ft_putstr_fd("put str\n", 1);
 		//ft_putendl_fd("putendl", 1);
+		ft_putnbr_fd(ft_atoi(argv[1]), 1);
 		return (0);
 	}
 	else
