@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/13 15:45:43 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:32:01 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,11 +288,14 @@ void	test_ft_strjoin(const char *s1, const char *s2)
 
 void	test_ft_strtrim(char const *s1, char const *set)
 {
-	char	*trimed;
-
-	printf("s1 address: %p\n", s1);
-	trimed = ft_strtrim(s1, set);
-	printf("ft_strtrim: %s\nft_strtrim adress: %p\n", trimed, trimed);
+	char	*trimmed;
+	size_t	write_len = ft_strlen(s1) + 5;
+	trimmed = ft_strtrim(s1, set);
+	//printf("ft_strtrim adress: %p\n", trimmed);
+	//printf("ft_strtrim out: %s\n", trimmed);
+	ft_putstr_fd("strtrim: ", 1);
+	write(1, trimmed, write_len);
+	write(1, "\n", 1);
 }
 
 void	test_ft_split(char const *s, char c, size_t splits_nbr)
@@ -302,7 +305,8 @@ void	test_ft_split(char const *s, char c, size_t splits_nbr)
 
 	i = 0;
 	splits = ft_split(s, c);
-	while (i < splits_nbr)
+	(void)splits_nbr;
+	while (splits)
 	{
 		printf("split[%zu]: %s\n", i, splits[i]);
 		i++;
@@ -374,10 +378,12 @@ int	main(int argc, char *argv[])
 		//test_ft_calloc(2147483640, 1);
 		//test_ft_calloc(5000000000, 1);
 		//test_ft_strdup(argv[1]);
-		test_ft_substr(argv[1], 6, 2);
+		//test_ft_substr(argv[1], 6, 2);
 		//test_ft_strjoin(argv[1], argv[2]);
-		//test_ft_strtrim(argv[1], argv[2]);
-		//test_ft_split(argv[1], argv[2][0], 7);
+		//test_ft_strtrim(argv[1], argv[2]) + 10);
+		//test_ft_strtrim("test \ntr", "\ntr");
+		test_ft_strtrim("lorem \n ipsum \t dolor \n sit \t amet", " ");
+		//test_ft_split(argv[1], argv[2][0], atoi(argv[3]));
 		//test_ft_itoa(atoi(argv[1]));
 		//test_ft_itoa(-2540090);
 		//test_ft_strmapi(argv[1], p_func_map);
