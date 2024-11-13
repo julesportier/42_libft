@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnmapi.c                                      :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:09:44 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/12 16:24:30 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/13 08:06:06 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	s_len;
-	size_t	i;
-	char	*s_map;
+	size_t			s_len;
+	unsigned int	i;
+	char			*s_map;
 
 	s_len = ft_strlen(s);
 	i = 0;
