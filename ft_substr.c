@@ -6,28 +6,40 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:00:17 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/11 13:04:54 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:43:59 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static size_t	get_subsize(const char *s, unsigned int start, size_t len)
+{
+	size_t	s_len;
+
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		return (0);
+	if (len > s_len - start)
+		return (s_len - start);
+	return (len);
+}
+
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	size_t	i;
-	size_t	j;
+	size_t	subsize;
 	char	*mem;
 
 	i = 0;
-	j = start;
-	mem = malloc((len + 1) * sizeof(char));
+	subsize = get_subsize(s, start, len);
+	mem = malloc((subsize + 1) * sizeof(char));
 	if (mem == NULL)
 		return (NULL);
-	while (i < len && s[j])
+	while (i < subsize/* && s[start]*/)
 	{
-		mem[i] = s[j];
+		mem[i] = s[start + i];
 		i++;
-		j++;
+		//start++;
 	}
 	mem[i] = '\0';
 	return (mem);

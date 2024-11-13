@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/13 15:10:49 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:45:43 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -366,7 +366,7 @@ int	main(int argc, char *argv[])
 		//test_ft_strncmp("\0", "\200", 8);
 		//test_ft_strncmp("123", "124", 8);
 		//test_ft_strncmp("abcdefgh", "abcdxyz", 5);
-		test_ft_memchr();
+		//test_ft_memchr();
 		//test_ft_memcmp(argv[1], argv[2], -10);
 		//test_ft_strnstr(argv[1], argv[2], 15);
 		//test_ft_atoi("      \n\t\v\f\r -9223372036854775806");
@@ -374,7 +374,7 @@ int	main(int argc, char *argv[])
 		//test_ft_calloc(2147483640, 1);
 		//test_ft_calloc(5000000000, 1);
 		//test_ft_strdup(argv[1]);
-		//test_ft_substr(argv[1], 3, 6);
+		test_ft_substr(argv[1], 6, 2);
 		//test_ft_strjoin(argv[1], argv[2]);
 		//test_ft_strtrim(argv[1], argv[2]);
 		//test_ft_split(argv[1], argv[2][0], 7);
