@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:26:24 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/07 15:17:17 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/13 11:15:01 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
+	if (src > dest)
+		return (ft_memcpy(dest, src, n));
 	while (n--)
 		((char *)dest)[n] = ((char *)src)[n];
 	return (dest);
