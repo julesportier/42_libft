@@ -6,15 +6,13 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:42:20 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/12 11:49:45 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/13 08:01:27 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	i;
+	unsigned int	i;
 
 	i = 0;
 	while (s[i])
