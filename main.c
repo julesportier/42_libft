@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/12 16:26:05 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/13 11:41:53 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,18 +111,21 @@ void	test_ft_memmove()
 {
 	//char	src[] = "0123456";
 	//char	src2[] = "0123456";
-	char	dest[] = "abcdefg";
+	char	dest[] = "abcdefgxxxx";
 	//char	pad[] = "padpadpad";
-	char	dest2[] = "abcdefg";
+	char	dest2[] = "abcdefgxxxx";
 	//ft_memmove(dest, src, 7);
 	//printf("%s\n", dest);
 	//memmove(dest2, src2, 7);
 	//printf("%s\n", dest2);
 	ft_memmove(dest + 4, dest, 3);
 	ft_putendl_fd(dest, 1);
-	//ft_putendl_fd(pad, 1);
 	memmove(dest2 + 4, dest2, 3);
 	ft_putendl_fd(dest2, 1);
+	//ft_memmove(dest, dest + 2, 5);
+	//ft_putendl_fd(dest, 1);
+	//memmove(dest2, dest2 + 2, 5);
+	//ft_putendl_fd(dest2, 1);
 	printf("\n");
 }
 
@@ -185,12 +188,14 @@ void	test_ft_tolower(int c)
 
 void	test_ft_strchr(const char *s, int c)
 {
-	printf("%s\n", ft_strchr(s, c));
-	printf("%s\n", strchr(s, c));
-	write(1, ft_strchr(s, c), 10);
-	write(1, "\n", 1);
-	write(1, strchr(s, c), 10);
-	write(1, "\n", 1);
+	char	*ft = ft_strchr(s, c);
+	char	*fc = strchr(s, c);
+	printf("ft: %s %p\n", ft, ft);
+	printf("fc: %s %p\n", fc, fc);
+	//write(1, ft_strchr(s, c), 10);
+	//write(1, "\n", 1);
+	//write(1, strchr(s, c), 10);
+	//write(1, "\n", 1);
 }
 
 void	test_ft_strrchr(const char *s, int c)
@@ -352,6 +357,7 @@ int	main(int argc, char *argv[])
 		//test_ft_tolower(argv[1][0]);
 		//test_ft_strchr(argv[1], argv[2][0]);
 		//test_ft_strchr(argv[1], '\0');
+		test_ft_strchr("teste", 'e' + 256);
 		//test_ft_strrchr(argv[1], argv[2][0]);
 		//test_ft_strrchr(argv[1], '\0');
 		//test_ft_strncmp(argv[1], argv[2], 8);
@@ -374,7 +380,7 @@ int	main(int argc, char *argv[])
 		//ft_putchar_fd('a', 1);
 		//ft_putstr_fd("put str\n", 1);
 		//ft_putendl_fd("putendl", 1);
-		ft_putnbr_fd(ft_atoi(argv[1]), 1);
+		//ft_putnbr_fd(ft_atoi(argv[1]), 1);
 		return (0);
 	}
 	else

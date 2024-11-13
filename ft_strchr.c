@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 08:46:16 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/08 09:00:28 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/13 11:43:47 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*ft_strchr(const char *s, int c)
 
 	i = 0;
 	slen = ft_strlen(s) + 1;
+	c = (char)c;
 	while (i < slen)
 	{
 		if (s[i] == c)
