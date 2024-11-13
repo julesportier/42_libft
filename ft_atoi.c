@@ -6,13 +6,13 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 09:00:48 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/11 10:57:26 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/13 09:36:04 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	overflows(long long nbr, int next_nbr, int sign)
+static int	overflows(long long nbr, int next_nbr, int sign)
 {
 	if (
 		nbr * sign > 0
@@ -22,7 +22,7 @@ int	overflows(long long nbr, int next_nbr, int sign)
 	return (0);
 }
 
-int	underflows(long long nbr, int next_nbr, int sign)
+static int	underflows(long long nbr, int next_nbr, int sign)
 {
 	if (
 		nbr * sign < 0

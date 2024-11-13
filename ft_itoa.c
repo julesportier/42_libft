@@ -6,20 +6,20 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 08:47:42 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/12 11:37:25 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/13 09:37:26 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_neg(int n)
+static int	is_neg(int n)
 {
 	if (n < 0)
 		return (1);
 	return (0);
 }
 
-int	get_pow(int n)
+static int	get_pow(int n)
 {
 	int	i;
 

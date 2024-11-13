@@ -6,13 +6,13 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:23:00 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/11 15:08:28 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/13 09:39:06 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	in_set(char const *set, char const c)
+static int	in_set(char const *set, char const c)
 {
 	size_t	i;
 

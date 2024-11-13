@@ -6,13 +6,13 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:12:13 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/13 07:59:19 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/13 09:38:33 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	count_splits(char const *s, char c)
+static size_t	count_splits(char const *s, char c)
 {
 	size_t	i;
 	size_t	count;
@@ -38,7 +38,7 @@ size_t	count_splits(char const *s, char c)
 	return (count);
 }
 
-size_t	get_split_len(char const *s, char c, size_t start)
+static size_t	get_split_len(char const *s, char c, size_t start)
 {
 	size_t	i;
 
@@ -52,7 +52,7 @@ size_t	get_split_len(char const *s, char c, size_t start)
 	return (i);
 }
 
-char	*make_split(char const *s, char c, size_t start)
+static char	*make_split(char const *s, char c, size_t start)
 {
 	size_t	split_len;
 	char	*split;
@@ -72,7 +72,7 @@ char	*make_split(char const *s, char c, size_t start)
 	return (split);
 }
 
-char	**free_splits(char **array, size_t pos)
+static char	**free_splits(char **array, size_t pos)
 {
 	while (pos)
 	{
