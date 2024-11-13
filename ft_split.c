@@ -6,12 +6,11 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:12:13 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/12 13:14:13 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/13 07:59:19 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 size_t	count_splits(char const *s, char c)
 {
@@ -36,7 +35,6 @@ size_t	count_splits(char const *s, char c)
 		}
 		i++;
 	}
-	printf("count = %zu\n", count);
 	return (count);
 }
 
