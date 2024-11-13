@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:52:03 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/13 14:26:15 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:10:49 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,9 +217,10 @@ void	test_ft_strncmp(const char *s1, const char *s2, size_t n)
 void	test_ft_memchr()
 {
 	int	size = 7;
-	int	chr = 'x';
-	printf("ft_memchr: %s\n", (char *)ft_memchr("test", chr, size));
-	printf("memchr: %s\n", (char *)memchr("test", chr, size));
+	int	chr = '\200';
+	char	*str = "test\200";
+	printf("ft_memchr: %p\n", (char *)ft_memchr(str, chr, size));
+	printf("memchr: %p\n", (char *)memchr(str, chr, size));
 }
 
 void	test_ft_memcmp(const void *s1, const void *s2, size_t n)
@@ -361,11 +362,11 @@ int	main(int argc, char *argv[])
 		//test_ft_strrchr(argv[1], argv[2][0]);
 		//test_ft_strrchr(argv[1], '\0');
 		//test_ft_strncmp(argv[1], argv[2], 8);
-		test_ft_strncmp("\200", "\0", 8);
-		test_ft_strncmp("\0", "\200", 8);
-		test_ft_strncmp("123", "124", 8);
-		test_ft_strncmp("abcdefgh", "abcdxyz", 5);
-		//test_ft_memchr();
+		//test_ft_strncmp("\200", "\0", 8);
+		//test_ft_strncmp("\0", "\200", 8);
+		//test_ft_strncmp("123", "124", 8);
+		//test_ft_strncmp("abcdefgh", "abcdxyz", 5);
+		test_ft_memchr();
 		//test_ft_memcmp(argv[1], argv[2], -10);
 		//test_ft_strnstr(argv[1], argv[2], 15);
 		//test_ft_atoi("      \n\t\v\f\r -9223372036854775806");
