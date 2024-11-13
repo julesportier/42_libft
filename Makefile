@@ -6,7 +6,7 @@
 #    By: juportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:03:35 by juportie          #+#    #+#              #
-#    Updated: 2024/11/12 17:01:48 by juportie         ###   ########.fr        #
+#    Updated: 2024/11/13 09:28:07 by juportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,15 +54,19 @@ SRC= ft_isalpha.c \
 
 OBJ= $(SRC:%.c=%.o)
 
-%.o: %.c $(HEADER)
+%.o: %.c $(HEADER) Makefile
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 all: $(NAME)
-
 $(NAME): $(OBJ)
 	ar r $(NAME) $^
 
-.PHONY: clean
-
 clean:
-	rm *.o *.a
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
