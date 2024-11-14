@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:00:17 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/13 15:43:59 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:37:42 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,10 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	mem = malloc((subsize + 1) * sizeof(char));
 	if (mem == NULL)
 		return (NULL);
-	while (i < subsize/* && s[start]*/)
+	while (i < subsize)
 	{
 		mem[i] = s[start + i];
 		i++;
-		//start++;
 	}
 	mem[i] = '\0';
 	return (mem);
