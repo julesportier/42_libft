@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:34:12 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/06 15:41:26 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:02:49 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
+	if (dest == NULL && src == NULL)
+		return (NULL);
 	i = 0;
 	while (i < n)
 	{
