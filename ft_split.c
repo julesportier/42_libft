@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:12:13 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/14 15:57:32 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/15 10:52:16 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,11 @@ static size_t	get_split_len(char const *s, char c, size_t start)
 	return (i);
 }
 
-static char	*make_split(char const *s, char c, size_t start)
+static char	*make_split(char const *s, size_t start, size_t split_len)
 {
-	size_t	split_len;
 	char	*split;
 	size_t	i;
 
-	split_len = get_split_len(s, c, start);
 	split = malloc((split_len + 1) * sizeof(char));
 	if (split == NULL)
 		return (NULL);
@@ -71,12 +69,17 @@ static char	*make_split(char const *s, char c, size_t start)
 
 static char	**free_splits(char **array, size_t pos)
 {
-	while (pos)
+	size_t	i;
+
+	i = 0;
+	while (i < pos)
 	{
 		free(array[pos]);
 		array[pos] = NULL;
-		pos--;
+		i++;
 	}
+	free(array);
+	array = NULL;
 	return (NULL);
 }
 
@@ -99,7 +102,7 @@ char	**ft_split(char const *s, char c)
 		while (s[s_pos] == c)
 			s_pos++;
 		split_len = get_split_len(s, c, s_pos);
-		array[array_pos] = make_split(s, c, s_pos);
+		array[array_pos] = make_split(s, s_pos, split_len);
 		if (array[array_pos] == NULL)
 			return (free_splits(array, array_pos));
 		s_pos = s_pos + split_len + 1;
@@ -122,8 +125,12 @@ char	**ft_split(char const *s, char c)
 //		while (splits[i])
 //		{
 //			printf("splits[%zu]: %s\n", i, splits[i]);
+//			free(splits[i]);
+//			splits[i] = NULL;
 //			i++;
 //		}
+//		free(splits);
+//		splits = NULL;
 //		return (0);
 //	}
 //	printf("two args required\n");
