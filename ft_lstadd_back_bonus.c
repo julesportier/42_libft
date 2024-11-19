@@ -14,12 +14,13 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*last_node;
-
-	if (*lst == NULL)
-		return ;
-	last_node = ft_lstlast(*lst);
-	last_node -> next = new;
+	if (lst)
+	{
+		if (*lst)
+			ft_lstlast(*lst)-> next = new;
+		else
+			*lst = new;
+	}
 }
 //
 //#include <stdio.h>
@@ -72,7 +73,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 //	print_list(list);
 //	ft_lstadd_back(&list, ft_lstnew("added"));
 //	print_list(list);
-//	ft_lstadd_back(&list, ft_lstnew("added once again"));
+//	ft_lstadd_back(&list, NULL);
 //	print_list(list);
 //	return (0);
 //}
