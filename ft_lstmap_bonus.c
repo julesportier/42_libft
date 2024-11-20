@@ -22,16 +22,16 @@ t_list	*ft_lstnew_secured(void *content)
 		free(content);
 		return (NULL);
 	}
-	list -> content = content;
-	list -> next = NULL;
+	list->content = content;
+	list->next = NULL;
 	return (list);
 }
 
 static t_list	*map_node(t_list *lst, t_list **mapped_list, void *(*f)(void *))
 {
-	ft_lstadd_back(mapped_list, ft_lstnew_secured(f(lst -> content)));
-	if ((*mapped_list)-> next)
-		return ((*mapped_list)-> next);
+	ft_lstadd_back(mapped_list, ft_lstnew_secured(f(lst->content)));
+	if ((*mapped_list)->next)
+		return ((*mapped_list)->next);
 	else
 		return (NULL);
 }
@@ -43,13 +43,13 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (lst == NULL || f == NULL || del == NULL)
 		return (NULL);
-	mapped_list = ft_lstnew_secured(f(lst -> content));
+	mapped_list = ft_lstnew_secured(f(lst->content));
 	if (mapped_list == NULL)
 		return (NULL);
 	mapped_list_head = mapped_list;
-	while (lst -> next)
+	while (lst->next)
 	{
-		lst = lst -> next;
+		lst = lst->next;
 		mapped_list = map_node(lst, &mapped_list, f);
 		if (mapped_list == NULL)
 		{
@@ -66,18 +66,18 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 //	printf(":::::::::::::::::::::::::::::\n");
 //	if (node)
 //	{
-//		printf("%zu -> address == %p\n", node_id, node);
-//		if (node -> content)
+//		printf("%zu->address == %p\n", node_id, node);
+//		if (node->content)
 //			printf(
-//				"%zu -> content == %s\n",
-//				node_id, (char *)(node -> content)
+//				"%zu->content == %s\n",
+//				node_id, (char *)(node->content)
 //			);
 //		else
-//			printf("%zu -> content == NULL\n", node_id);
-//		if (node -> next)
-//			printf("%zu -> next == %p\n", node_id, node -> next);
+//			printf("%zu->content == NULL\n", node_id);
+//		if (node->next)
+//			printf("%zu->next == %p\n", node_id, node->next);
 //		else
-//			printf("%zu -> next == NULL\n", node_id);
+//			printf("%zu->next == NULL\n", node_id);
 //	}
 //	else
 //		printf("%zu == NULL\n", node_id);
@@ -88,10 +88,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 //	size_t	i;
 //
 //	i = 0;
-//	while (node -> next)
+//	while (node->next)
 //	{
 //		print_node(node, i++);
-//		node = node -> next;
+//		node = node->next;
 //	}
 //	print_node(node, i);
 //}

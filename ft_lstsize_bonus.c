@@ -19,9 +19,9 @@ int	ft_lstsize(t_list *lst)
 	if (lst == NULL)
 		return (0);
 	i = 1;
-	while (lst -> next)
+	while (lst->next)
 	{
-		lst = lst -> next;
+		lst = lst->next;
 		i++;
 	}
 	return (i);
@@ -31,20 +31,20 @@ int	ft_lstsize(t_list *lst)
 //void	print_node(t_list *node, char *name)
 //{
 //	printf(":::::::::::::::::::::::::::::\n");
-//	printf("%s -> content == %s\n", name, (char *)(node -> content));
-//	printf("%s -> address == %p\n", name, node);
-//	if (node -> next)
-//		printf("%s -> next == %p\n", name, node -> next);
+//	printf("%s->content == %s\n", name, (char *)(node->content));
+//	printf("%s->address == %p\n", name, node);
+//	if (node->next)
+//		printf("%s->next == %p\n", name, node->next);
 //	else
-//		printf("%s -> next == NULL\n", name);
+//		printf("%s->next == NULL\n", name);
 //}
 //
 //void	print_list(t_list *node)
 //{
-//	while (node -> next)
+//	while (node->next)
 //	{
-//		print_node(node, node -> content);
-//		node = node -> next;
+//		print_node(node, node->content);
+//		node = node->next;
 //	}
 //	print_node(node, "NULL");
 //}
@@ -75,7 +75,7 @@ int	ft_lstsize(t_list *lst)
 //	if (list == NULL)
 //		return (-1);
 //	//print_node(list, "list");
-//	//print_node(list -> next, "next");
+//	//print_node(list->next, "next");
 //	print_list(list);
 //	printf("list len == %d\n", ft_lstsize(list));
 //	return (0);

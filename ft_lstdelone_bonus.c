@@ -16,7 +16,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (lst == NULL)
 		return ;
-	del(lst -> content);
+	del(lst->content);
 	free(lst);
 }
 //
@@ -26,15 +26,15 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 //	printf(":::::::::::::::::::::::::::::\n");
 //	if (node)
 //	{
-//		if (node -> content)
-//			printf("%s -> content == %s\n", name, (char *)(node -> content));
+//		if (node->content)
+//			printf("%s->content == %s\n", name, (char *)(node->content));
 //		else
-//			printf("%s -> content == NULL\n", name);
-//		printf("%s -> address == %p\n", name, node);
-//		if (node -> next)
-//			printf("%s -> next == %p\n", name, node -> next);
+//			printf("%s->content == NULL\n", name);
+//		printf("%s->address == %p\n", name, node);
+//		if (node->next)
+//			printf("%s->next == %p\n", name, node->next);
 //		else
-//			printf("%s -> next == NULL\n", name);
+//			printf("%s->next == NULL\n", name);
 //	}
 //	else
 //		printf("%s == NULL\n", name);
@@ -42,12 +42,12 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 //
 //void	print_list(t_list *node)
 //{
-//	while (node -> next)
+//	while (node->next)
 //	{
-//		print_node(node, node -> content);
-//		node = node -> next;
+//		print_node(node, node->content);
+//		node = node->next;
 //	}
-//	print_node(node, node -> content);
+//	print_node(node, node->content);
 //}
 //
 //t_list	*create_list(int size)
@@ -81,8 +81,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 //	list = create_list(5);
 //	if (list == NULL)
 //		return (-1);
-//	node_to_del = list -> next;
-//	next_node = node_to_del -> next;
+//	node_to_del = list->next;
+//	next_node = node_to_del->next;
 //	print_list(list);
 //	//ft_lstdelone(node_to_del, test_del);
 //	ft_lstdelone(node_to_del, free);

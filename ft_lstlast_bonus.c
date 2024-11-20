@@ -16,8 +16,8 @@ t_list	*ft_lstlast(t_list *lst)
 {
 	if (lst == NULL)
 		return (NULL);
-	while (lst -> next)
-		lst = lst -> next;
+	while (lst->next)
+		lst = lst->next;
 	return (lst);
 }
 //
@@ -25,20 +25,20 @@ t_list	*ft_lstlast(t_list *lst)
 //void	print_node(t_list *node, char *name)
 //{
 //	printf(":::::::::::::::::::::::::::::\n");
-//	printf("%s -> content == %s\n", name, (char *)(node -> content));
-//	printf("%s -> address == %p\n", name, node);
-//	if (node -> next)
-//		printf("%s -> next == %p\n", name, node -> next);
+//	printf("%s->content == %s\n", name, (char *)(node->content));
+//	printf("%s->address == %p\n", name, node);
+//	if (node->next)
+//		printf("%s->next == %p\n", name, node->next);
 //	else
-//		printf("%s -> next == NULL\n", name);
+//		printf("%s->next == NULL\n", name);
 //}
 //
 //void	print_list(t_list *node)
 //{
-//	while (node -> next)
+//	while (node->next)
 //	{
-//		print_node(node, node -> content);
-//		node = node -> next;
+//		print_node(node, node->content);
+//		node = node->next;
 //	}
 //	print_node(node, "NULL");
 //}
@@ -69,7 +69,7 @@ t_list	*ft_lstlast(t_list *lst)
 //	if (list == NULL)
 //		return (-1);
 //	//print_node(list, "list");
-//	//print_node(list -> next, "next");
+//	//print_node(list->next, "next");
 //	print_list(list);
 //	print_node(list, "first node");
 //	print_node(ft_lstlast(list), "last node");

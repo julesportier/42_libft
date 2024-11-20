@@ -19,8 +19,8 @@ t_list	*ft_lstnew(void *content)
 	list = malloc(sizeof(t_list));
 	if (list == NULL)
 		return (NULL);
-	list -> content = content;
-	list -> next = NULL;
+	list->content = content;
+	list->next = NULL;
 	return (list);
 }
 //
@@ -30,7 +30,7 @@ t_list	*ft_lstnew(void *content)
 //	char	*content = "test";
 //	t_list	*list = ft_lstnew(content);
 //
-//	printf("list.content == %s\n", (char *)(list -> content));
+//	printf("list.content == %s\n", (char *)(list->content));
 //	free(list);
 //	list = NULL;
 //	return (0);
