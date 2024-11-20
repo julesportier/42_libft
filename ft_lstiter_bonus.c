@@ -94,6 +94,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 //		return (-1);
 //	print_list(list);
 //	ft_lstiter(list, change_node_content);
+//	//ft_lstiter(list, NULL);
 //	print_list(list);
 //	ft_lstclear(&list, del_node_content);
 //	list = NULL;

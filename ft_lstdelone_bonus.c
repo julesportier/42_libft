@@ -85,7 +85,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 //	next_node = node_to_del->next;
 //	print_list(list);
 //	//ft_lstdelone(node_to_del, test_del);
-//	ft_lstdelone(node_to_del, free);
+//	ft_lstdelone(node_to_del, NULL);
 //	print_node(list, "before deleted");
 //	print_node(next_node, "after deleted");
 //	print_list(list);
