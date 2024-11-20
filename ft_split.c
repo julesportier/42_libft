@@ -69,17 +69,12 @@ static char	*make_split(char const *s, size_t start, size_t split_len)
 
 static char	**free_splits(char **array, size_t pos)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < pos)
+	while (pos--)
 	{
 		free(array[pos]);
 		array[pos] = NULL;
-		i++;
 	}
 	free(array);
-	array = NULL;
 	return (NULL);
 }
 
