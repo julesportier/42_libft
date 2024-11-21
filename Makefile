@@ -69,7 +69,7 @@ OBJ = $(SRC:%.c=%.o)
 
 all: $(NAME)
 $(NAME): $(OBJ)
-	ar r $(NAME) $?
+	ar rs $(NAME) $?
 
 clean:
 	rm -f $(OBJ) $(OBJ_BONUS) bonus
@@ -81,7 +81,7 @@ re: fclean all
 
 OBJ_BONUS = $(SRC_BONUS:%.c=%.o)
 bonus: $(OBJ_BONUS) $(OBJ)
-	ar r $(NAME) $? ; \
+	ar rs $(NAME) $? ; \
 	touch bonus ; \
 	day=$$(date +"%F") ; \
 	time=$$(date +"%T") ; \
