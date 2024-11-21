@@ -41,7 +41,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*mapped_list;
 	t_list	*mapped_list_head;
 
-	if (lst == NULL || f == NULL || del == NULL)
+	if (lst == NULL || f == NULL)
 		return (NULL);
 	mapped_list = ft_lstnew_secured(f(lst->content));
 	if (mapped_list == NULL)
