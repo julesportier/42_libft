@@ -6,11 +6,11 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 09:27:05 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/22 15:48:05 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:12:06 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 void	ft_putnbr_fd(int n, int fd, int *count)
 {
