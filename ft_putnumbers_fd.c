@@ -36,33 +36,33 @@ void	ft_putnbr_fd(int n, int fd, int *count)
 
 void	ft_putulbase_fd(unsigned long nbr, char *base, int fd, int *count)
 {
-	int	base_len;
+	unsigned long	base_len;
 
 	base_len = ft_strlen(base);
 	if (base_len < 1)
 		return ;
-	if (nbr > 9)
+	if (nbr > base_len - 1)
 	{
 		ft_putulbase_fd(nbr / base_len, base, fd, count);
 		*count += ft_putchar_fd(base[(nbr % base_len)], fd);
 	}
-	else if (nbr != 0)
+	else
 		*count += ft_putchar_fd(base[nbr], fd);
 }
 
 void	ft_putuibase_fd(unsigned int nbr, char *base, int fd, int *count)
 {
-	int	base_len;
+	unsigned int	base_len;
 
 	base_len = ft_strlen(base);
 	if (base_len < 1)
 		return ;
-	if (nbr > 9)
+	if (nbr > base_len - 1)
 	{
 		ft_putulbase_fd(nbr / base_len, base, fd, count);
 		*count += ft_putchar_fd(base[(nbr % base_len)], fd);
 	}
-	else if (nbr != 0)
+	else
 		*count += ft_putchar_fd(base[nbr], fd);
 }
 
