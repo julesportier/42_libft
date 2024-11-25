@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 13:45:21 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/22 17:11:51 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:12:36 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	ft_putstr_fd(char *s, int fd)
 {
 	int	s_len;
 
+	if (s == NULL)
+		return (ft_putstr_fd("(null)", fd));
 	s_len = ft_strlen(s);
 	if (s_len < 0)
 		return (-1);

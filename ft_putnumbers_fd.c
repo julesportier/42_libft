@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 09:27:05 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/22 17:12:06 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:12:28 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ void	ft_putuibase_fd(unsigned int nbr, char *base, int fd, int *count)
 
 void	ft_putaddress_fd(unsigned long address, int fd, int *count)
 {
-	*count += ft_putstr_fd("0x", fd);
-	ft_putulbase_fd(address, "0123456789abcdef", fd, count);
+	if (address)
+	{
+		*count += ft_putstr_fd("0x", fd);
+		ft_putulbase_fd(address, "0123456789abcdef", fd, count);
+	}
+	else
+		*count += ft_putstr_fd("(nil)", fd);
 }
