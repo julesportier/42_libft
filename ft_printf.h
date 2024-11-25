@@ -16,9 +16,9 @@
 # include <stdarg.h>
 # include <unistd.h>
 
-int	ft_strlen(char *str);
-int	ft_putchar_fd(char c, int fd);
-int	ft_putstr_fd(char *s, int fd);
+int		ft_strlen(char *str);
+int		ft_putchar_fd(char c, int fd);
+int		ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd, int *count);
 void	ft_putuibase_fd(unsigned int nbr, char *base, int fd, int *count);
 void	ft_putulbase_fd(unsigned long nbr, char *base, int fd, int *count);
