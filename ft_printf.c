@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:27:10 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/22 15:52:42 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:12:43 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ int	ft_printf(const char *str, ...)
 }
 //
 //#include <stdio.h>
+//#include <limits.h>
 ////int	main(int argc, char **argv)
 //int	main(void)
 //{
@@ -124,26 +125,25 @@ int	ft_printf(const char *str, ...)
 //
 //	int	i = -153;
 //	//unsigned int	ui = 4294967295;
-//	//int	ftcount = 0;
-//	//ftcount = ft_printf(
-//	//	"ft_printf d == %d i == %i ui == %u x == %x X == %X\n",
-//	//	i, i, ui, ui, ui
-//	//);
-//	//printf("ftcount == %d\n", ftcount);
-//	//int	pcount = 0;
-//	//pcount = printf(
-//	//	"cl_printf d == %d i == %i ui == %u x == %x X == %X\n",
-//	//	i, i, ui, ui, ui
-//	//);
-//	//printf("pcount == %d\n", pcount);
+//	unsigned int	ui = -ULONG_MAX;
 //	int	ftcount = 0;
-//	ftcount = ft_printf("%i", i, str, i);
-//	//ftcount = ft_printf("qoqqwrqws%d%s", i, str, i);
+//	ftcount = ft_printf(
+//		"ft_printf d == %d i == %i ui == %u x == %x X == %X\n",
+//		i, i, ui, ui, ui
+//	);
 //	printf("ftcount == %d\n", ftcount);
 //	int	pcount = 0;
-//	pcount = printf("%i", i, str, i);
-//	//pcount = printf("qoqqwrqws%d%s", i, str, i);
+//	pcount = printf(
+//		"cl_printf d == %d i == %i ui == %u x == %x X == %X\n",
+//		i, i, ui, ui, ui
+//	);
 //	printf("pcount == %d\n", pcount);
+//	//int	ftcount = 0;
+//	//ftcount = ft_printf("%i ; %s ; %p\n", i, NULL, -15, str, i);
+//	//printf("ftcount == %d\n", ftcount);
+//	//int	pcount = 0;
+//	//pcount = printf("%i ; %s ; %p\n", i, NULL, -15, str, i);
+//	//printf("pcount == %d\n", pcount);
 //	//printf("%s \n", argv[1], argv[2]);
 //	return (0);
 //}
