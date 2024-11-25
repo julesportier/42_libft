@@ -10,13 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft/libft.h"
-#include "printf.h"
+#include "ft_printf.h"
 
 int	check_formaters(char c)
 {
 	char	*formaters;
-	int	i;
+	int		i;
 
 	formaters = "cspdiuxX%";
 	i = 0;
@@ -28,7 +27,7 @@ int	check_formaters(char c)
 	}
 	return (0);
 }
-	
+
 int	count_formats(const char *str)
 {
 	int	i;
@@ -45,7 +44,7 @@ int	count_formats(const char *str)
 			count++;
 			if (str[i + 1] == '%')
 			{
- 				if (++i < 0)
+				if (++i < 0)
 					return (-2);
 			}
 		}
@@ -82,9 +81,9 @@ int	parse_type(const char format, va_list ap)
 int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
-	int	f_count;
-	int	i;
-	int	w_count;
+	int		f_count;
+	int		i;
+	int		w_count;
 
 	va_start(ap, str);
 	f_count = count_formats(str);
@@ -97,7 +96,7 @@ int	ft_printf(const char *str, ...)
 		while (str[i] != '%')
 		{
 			if (str[i] == '\0')
-				return (i);
+				return (w_count);
 			w_count += write(1, &str[i], 1);
 			i++;
 		}
@@ -107,68 +106,44 @@ int	ft_printf(const char *str, ...)
 	va_end(ap);
 	return (w_count);
 }
-
-#include <stdio.h>
-//int	main(int argc, char **argv)
-int	main(void)
-{
-	//if (argc < 2)
-	//{
-	//	printf("Give an arg !\n");
-	//	return (0);
-	//}
-	//char *str = "[s format0]";
-	//char *str2 = "[s format1]";
-	//char	c = 'c';
-	//char	*p = str;
-	//char	**dp = &p;
-
-	//ft_printf("ft_printf test %s %s char : %c straddress : %p paddress : %p hex 18 == %p\n", str, str2, c, p, dp, (unsigned long)798754);
-	//printf("printf straddress %p printf paddress %p\n", p, dp);
-	//printf("\n");
-	int	i = 0x153;
-	unsigned int	ui = 4294967295;
-	int	ftcount = 0;
-	ftcount = ft_printf("ft_printf d == %d i == %i ui == %u x == %x X == %X\n", i, i, ui, ui, ui);
-	printf("ftcount == %d\n", ftcount);
-	int	pcount = 0;
-	pcount = printf("cl_printf d == %d i == %i ui == %u x == %x X == %X\n", i, i, ui, ui, ui);
-	printf("pcount == %d\n", pcount);
-	//printf("%s \n", argv[1], argv[2]);
-	//printf("%s %s %s %s %s %s %s \n", argv[1]);
-	//printf("count -> %d\n", count_args(argv[1]));
-	//printf("count -> %d\n", count_args(argv[1]));
-	//test_va(4, 1, 2, 3);
-	//printf("c -> %05d\n", argv[1][0]);
-	//printf("c -> %-7d\n", argv[1][0]);
-	//double d = 12345;
-	//printf("c -> %#a\n", d);
-	//printf("c -> %c\n", argv[1][0]);
-	//printf("s -> %s\n", argv[1]);
-
-	// hex pointer
-	//printf("p -> %p\n", argv[1]);
-
-	//printf("d -> %d\n", argv[1]);
-	//printf("i -> %i\n", argv[1]);
-	//printf("u -> %u\n", argv[1]);
-
-	//// hex lowercase
-	//printf("x -> %x\n", argv[1]);
-	//// hex uppercase
-	//printf("X -> %X\n", argv[1]);
-
-	//// print percent sign
-	//printf("% -> %%\n", argv[1]);
-	return (0);
-}
-//int	test_va(int n, ...)
-//{
-//	va_list	ap;
 //
-//	va_start(ap, n);
-//	while (n--)
-//		printf("va_arg -> %d\n", va_arg(ap, int));
-//	va_end(ap);
+//#include <stdio.h>
+////int	main(int argc, char **argv)
+//int	main(void)
+//{
+//	//if (argc < 2)
+//	//{
+//	//	printf("Give an arg !\n");
+//	//	return (0);
+//	//}
+//	char *str = "[s format0]";
+//	//char *str2 = "[s format1]";
+//	//char	c = 'c';
+//	//char	*p = str;
+//	//char	**dp = &p;
+//
+//	int	i = -153;
+//	//unsigned int	ui = 4294967295;
+//	//int	ftcount = 0;
+//	//ftcount = ft_printf(
+//	//	"ft_printf d == %d i == %i ui == %u x == %x X == %X\n",
+//	//	i, i, ui, ui, ui
+//	//);
+//	//printf("ftcount == %d\n", ftcount);
+//	//int	pcount = 0;
+//	//pcount = printf(
+//	//	"cl_printf d == %d i == %i ui == %u x == %x X == %X\n",
+//	//	i, i, ui, ui, ui
+//	//);
+//	//printf("pcount == %d\n", pcount);
+//	int	ftcount = 0;
+//	ftcount = ft_printf("%i", i, str, i);
+//	//ftcount = ft_printf("qoqqwrqws%d%s", i, str, i);
+//	printf("ftcount == %d\n", ftcount);
+//	int	pcount = 0;
+//	pcount = printf("%i", i, str, i);
+//	//pcount = printf("qoqqwrqws%d%s", i, str, i);
+//	printf("pcount == %d\n", pcount);
+//	//printf("%s \n", argv[1], argv[2]);
 //	return (0);
 //}
