@@ -15,7 +15,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = libftprintf.a
 
-HEADER = libftprintf.h
+HEADER = ft_printf.h
 
 SRC = ft_printf.c \
       ft_putnumbers_fd.c \
