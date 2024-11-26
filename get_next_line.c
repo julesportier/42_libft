@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:18:21 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/26 11:29:32 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:13:06 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_next_line(int fd)
 	ssize_t	line_len;
 	char	*buffer;
 
-	if (!fd)
+	if (fd < 0)
 		return (NULL);
 	line_len = 0;
 	buffer = cat_line(line_len, NULL);
