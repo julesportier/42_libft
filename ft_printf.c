@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	check_formaters(char c)
+static int	check_formaters(char c)
 {
 	char	*formaters;
 	int		i;
@@ -28,7 +28,7 @@ int	check_formaters(char c)
 	return (0);
 }
 
-int	count_formats(const char *str)
+static int	count_formats(const char *str)
 {
 	int	i;
 	int	count;
@@ -54,7 +54,7 @@ int	count_formats(const char *str)
 	return (count);
 }
 
-int	parse_type(const char format, va_list ap)
+static int	parse_type(const char format, va_list ap)
 {
 	int	i;
 
@@ -123,21 +123,31 @@ int	ft_printf(const char *str, ...)
 //	//char	*p = str;
 //	//char	**dp = &p;
 //
-//	int	i = -153;
+//	//int	i = -153;
 //	//unsigned int	ui = 4294967295;
-//	unsigned int	ui = -ULONG_MAX;
+//	//unsigned int	ui = -ULONG_MAX;
+//	//int	ftcount = 0;
+//	//ftcount = ft_printf(
+//	//	"ft_printf d == %d i == %i ui == %u x == %x X == %X\n",
+//	//	i, i, ui, ui, ui
+//	//);
+//	//printf("ftcount == %d\n", ftcount);
+//	//int	pcount = 0;
+//	//pcount = printf(
+//	//	"cl_printf d == %d i == %i ui == %u x == %x X == %X\n",
+//	//	i, i, ui, ui, ui
+//	//);
+//	//printf("pcount == %d\n", pcount);
 //	int	ftcount = 0;
 //	ftcount = ft_printf(
-//		"ft_printf d == %d i == %i ui == %u x == %x X == %X\n",
-//		i, i, ui, ui, ui
+//		"%X", 2167
 //	);
-//	printf("ftcount == %d\n", ftcount);
+//	printf("\nftcount == %d\n", ftcount);
 //	int	pcount = 0;
 //	pcount = printf(
-//		"cl_printf d == %d i == %i ui == %u x == %x X == %X\n",
-//		i, i, ui, ui, ui
+//		"%X", 2167
 //	);
-//	printf("pcount == %d\n", pcount);
+//	printf("\npcount == %d\n", pcount);
 //	//int	ftcount = 0;
 //	//ftcount = ft_printf("%i ; %s ; %p\n", i, NULL, -15, str, i);
 //	//printf("ftcount == %d\n", ftcount);
