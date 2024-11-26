@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:18:21 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/26 10:38:28 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:57:16 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,14 @@ char	*get_next_line(int fd)
 	if (!fd)
 		return (NULL);
 	line_len = 0;
-	while (buffer[lin_len] != '\n')
+	buffer = cat_line(line_len, NULL);
+	if (buffer == NULL)
+		return (NULL);
+	while (buffer[line_len] != '\n')
 	{
-		buffer = malloc(sizeof(char) * (line_len + 1);
+		buffer = cat_line(line_len, buffer);
+		if (buffer == NULL)
+			return (NULL);
 		char_read = read(fd, buffer[line_len], 1);
 		if (char_read == 0)
 			return (buffer);
