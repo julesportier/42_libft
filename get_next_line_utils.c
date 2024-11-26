@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:41:10 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/26 11:26:52 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:58:24 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	*create_buffer(ssize_t line_len, char *buffer)
 		free(buffer);
 		return (NULL);
 	}
-	buffer[line_len] = '\0';
+	new_buffer[line_len] = '\0';
 	return (new_buffer);
 }
 
@@ -45,12 +45,14 @@ char	*cat_line(ssize_t line_len, char *buffer)
 	new_buffer = create_buffer(line_len, buffer);
 	if (new_buffer == NULL)
 		return (NULL);
-	while (buffer[i])
+	if (buffer)
 	{
-		new_buffer[i] = buffer[i];
-		i++;
+		while (buffer[i])
+		{
+			new_buffer[i] = buffer[i];
+			i++;
+		}
+		free(buffer);
 	}
-	new_buffer[i] = '\0';
-	free(buffer);
 	return (new_buffer);
 }
