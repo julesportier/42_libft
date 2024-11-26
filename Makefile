@@ -10,19 +10,19 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CC := cc
+CFLAGS := -Wall -Wextra -Werror
 
-NAME = libftprintf.a
+NAME := libftprintf.a
 
-HEADER = ft_printf.h
+HEADER := ft_printf.h
 
-SRC = ft_printf.c \
+SRC := ft_printf.c \
       ft_putnumbers_fd.c \
       ft_puttext_fd.c
 
 
-OBJ = $(SRC:%.c=%.o)
+OBJ := $(SRC:%.c=%.o)
 
 %.o: %.c $(HEADER) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
