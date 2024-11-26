@@ -6,11 +6,11 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:18:21 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/26 10:57:16 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:29:32 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
@@ -29,7 +29,7 @@ char	*get_next_line(int fd)
 		buffer = cat_line(line_len, buffer);
 		if (buffer == NULL)
 			return (NULL);
-		char_read = read(fd, buffer[line_len], 1);
+		char_read = read(fd, buffer + line_len, 1);
 		if (char_read == 0)
 			return (buffer);
 		else if (char_read == -1)

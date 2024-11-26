@@ -6,11 +6,11 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:41:10 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/26 11:18:01 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:26:52 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "get_next_line.h"
 
 static char	*create_buffer(ssize_t line_len, char *buffer)
 {
