@@ -24,12 +24,13 @@ SRC := ft_printf.c \
 
 OBJ := $(SRC:%.c=%.o)
 
-%.o: %.c $(HEADER) Makefile
-	$(CC) $(CFLAGS) -c $< -o $@
-
 all: $(NAME)
+
 $(NAME): $(OBJ)
 	ar rs $(NAME) $?
+
+%.o: %.c $(HEADER) Makefile
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
