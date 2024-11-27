@@ -88,7 +88,7 @@ int	ft_printf(const char *str, ...)
 	va_start(ap, str);
 	f_count = count_formats(str);
 	if (f_count < 0)
-		return (-1);
+		return (f_count);
 	i = 0;
 	w_count = 0;
 	while (f_count-- + 1)
