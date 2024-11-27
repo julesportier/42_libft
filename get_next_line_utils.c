@@ -6,53 +6,71 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:41:10 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/26 12:58:24 by juportie         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:14:49 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*create_buffer(ssize_t line_len, char *buffer)
+static ssize_t	ft_strlen(char *s)
 {
-	char	*new_buffer;
-	ssize_t	malloc_size;
+	ssize_t	i;
 
-	if (buffer)
-		malloc_size = line_len + 1;
-	else if (line_len == 0)
-		malloc_size = 1;
-	else
-	{
-		free(buffer);
-		return (NULL);
-	}
-	new_buffer = malloc(sizeof(char) * malloc_size);
-	if (new_buffer == NULL)
-	{
-		free(buffer);
-		return (NULL);
-	}
-	new_buffer[line_len] = '\0';
-	return (new_buffer);
+	if (s == NULL)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
-char	*cat_line(ssize_t line_len, char *buffer)
+char	*ft_cat(char *line, char *buffer, ssize_t len)
 {
-	char	*new_buffer;
+	ssize_t	line_len;
+	char	*cat;
+	ssize_t	i;
+
+	line_len = ft_strlen(line);
+	cat = malloc(sizeof(char) * (line_len + len + 1));
+	if (cat == NULL)
+	{
+		free(line);
+		return (NULL);
+	}
+	i = 0;
+	while (i < line_len)
+	{
+		cat[i] = line[i];
+		i++;
+	}
+	free(line);
+	while (i < line_len + len)
+	{
+		cat[i] = buffer[i - line_len];
+		i++;
+	}
+	cat[i] = '\0';
+	return (cat);
+}
+
+//ssize_t	fill_buffer(char *buffer)
+//{
+//	return (read(fd, buffer, BUFFER_SIZE));
+//}
+
+// The argument max_len is here to secure the reading,
+// because neither the buffer or the file are true strings.
+// The file can contain '\0' too (but why doing that ?).
+ssize_t	get_line_len(char *buffer, ssize_t max_len)
+{
 	ssize_t	i;
 
 	i = 0;
-	new_buffer = create_buffer(line_len, buffer);
-	if (new_buffer == NULL)
-		return (NULL);
-	if (buffer)
+	while (i < max_len)
 	{
-		while (buffer[i])
-		{
-			new_buffer[i] = buffer[i];
-			i++;
-		}
-		free(buffer);
+		i++;
+ 		if (buffer[i] == '\n')
+			return (i);
 	}
-	return (new_buffer);
+	return (i);
 }
