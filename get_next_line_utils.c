@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+	#include "stdio.h"
 
 static ssize_t	ft_strlen(char *s)
 {
@@ -31,6 +32,10 @@ char	*ft_cat(char *line, char *buffer, ssize_t len)
 	ssize_t	i;
 
 	line_len = ft_strlen(line);
+	if (len == -1)
+		len = BUFFER_SIZE;
+	//write(1, buffer, BUFFER_SIZE); write(1, "\n", 1);
+	//printf("line_len + len == %zu\n", line_len + len);
 	cat = malloc(sizeof(char) * (line_len + len + 1));
 	if (cat == NULL)
 	{
@@ -44,7 +49,7 @@ char	*ft_cat(char *line, char *buffer, ssize_t len)
 		i++;
 	}
 	free(line);
-	while (i < line_len + len)
+	while (i < line_len + len && i < line_len + BUFFER_SIZE)
 	{
 		cat[i] = buffer[i - line_len];
 		i++;
@@ -52,11 +57,6 @@ char	*ft_cat(char *line, char *buffer, ssize_t len)
 	cat[i] = '\0';
 	return (cat);
 }
-
-//ssize_t	fill_buffer(char *buffer)
-//{
-//	return (read(fd, buffer, BUFFER_SIZE));
-//}
 
 // The argument max_len is here to secure the reading,
 // because neither the buffer or the file are true strings.
@@ -66,11 +66,11 @@ ssize_t	get_line_len(char *buffer, ssize_t max_len)
 	ssize_t	i;
 
 	i = 0;
-	while (i < max_len)
+	while (i <= max_len)
 	{
 		i++;
- 		if (buffer[i] == '\n')
+ 		if (buffer[i - 1] == '\n')
 			return (i);
 	}
-	return (i);
+	return (-1);
 }
