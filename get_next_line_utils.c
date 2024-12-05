@@ -25,17 +25,19 @@ static ssize_t	ft_strlen(char *s)
 	return (i);
 }
 
-char	*ft_cat(char *line, char *buffer, ssize_t len)
+char	*ft_cat(char *line, char *buffer, ssize_t nl_pos)
 {
 	ssize_t	line_len;
 	char	*cat;
 	ssize_t	i;
+	ssize_t	len;
 
 	line_len = ft_strlen(line);
+	if (nl_pos == -1)
+		nl_pos = 0;
+	len = get_line_len(buffer + nl_pos, BUFFER_SIZE - nl_pos);
 	if (len == -1)
-		len = BUFFER_SIZE;
-	//write(1, buffer, BUFFER_SIZE); write(1, "\n", 1);
-	//printf("line_len + len == %zu\n", line_len + len);
+		len = BUFFER_SIZE - nl_pos;
 	cat = malloc(sizeof(char) * (line_len + len + 1));
 	if (cat == NULL)
 	{
@@ -49,9 +51,9 @@ char	*ft_cat(char *line, char *buffer, ssize_t len)
 		i++;
 	}
 	free(line);
-	while (i < line_len + len && i < line_len + BUFFER_SIZE)
+	while (i < line_len + len)
 	{
-		cat[i] = buffer[i - line_len];
+		cat[i] = buffer[i - line_len + nl_pos];
 		i++;
 	}
 	cat[i] = '\0';
