@@ -28,11 +28,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (nl_pos <= BUFFER_SIZE && nl_pos >= 0)
 	{
-		line = ft_cat(
-			line,
-			buffer + nl_pos,
-			get_line_len(buffer + nl_pos, BUFFER_SIZE - nl_pos)
-		);
+		line = ft_cat(line, buffer, nl_pos);
 		if (nl_pos != -1 && get_line_len(buffer + nl_pos, BUFFER_SIZE - nl_pos) != -1)
 			nl_pos += get_line_len(buffer + nl_pos, BUFFER_SIZE - nl_pos);
 		else if (nl_pos != -1 && get_line_len(buffer + nl_pos, BUFFER_SIZE - nl_pos) == -1)
@@ -57,8 +53,8 @@ char	*get_next_line(int fd)
 			free(line);
 			return (NULL);
 		}
-		nl_pos = get_line_len(buffer, read_len);
 		line = ft_cat(line, buffer, nl_pos);
+		nl_pos = get_line_len(buffer, read_len);
 		if (nl_pos <= BUFFER_SIZE && nl_pos >= 0)
 		{
 			if (nl_pos == BUFFER_SIZE || nl_pos == read_len)
