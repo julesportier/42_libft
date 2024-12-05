@@ -17,11 +17,17 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 50
 # endif
 
 char	*ft_cat(char *line, char *buffer, ssize_t len);
 //ssize_t	fill_buffer(char *buffer);
 ssize_t	get_line_len(char *buffer, ssize_t max_len);
+
+struct static_data {
+	char	buffer[BUFFER_SIZE];
+	ssize_t	nl_pos;
+	ssize_t read_len;
+};
 
 #endif

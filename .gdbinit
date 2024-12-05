@@ -7,7 +7,7 @@ b 47
 b 50
 b 57
 c
-display buffer
+display data.buffer
 display line
-display nl_pos
-display read_len
+display data.nl_pos
+display data.read_len
