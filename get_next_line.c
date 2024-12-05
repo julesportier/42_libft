@@ -50,7 +50,9 @@ char	*get_next_line(int fd)
 	while (nl_pos == -1)
 	{
 		read_len = read(fd, buffer, BUFFER_SIZE);
-		if (read_len < 1)
+		if (read_len == 0)
+			return (line);
+		if (read_len == -1)
 		{
 			free(line);
 			return (NULL);
@@ -72,16 +74,21 @@ int	main(void)
 //int	main(int argc, char *argv[])
 {
 //	if (argc)
-	int	fd = open("lorem_ipsum.txt", O_RDONLY);
+	//int	fd = open("lorem_ipsum.txt", O_RDONLY);
+	//int	fd = open("void.txt", O_RDONLY);
+	//int	fd = open("nonewline.txt", O_RDONLY);
+	//int	fd = open("bible.txt", O_RDONLY);
+	int	fd = open("alarecherchedutempsperdu.txt", O_RDONLY);
 	ssize_t	i = 0;
 	char	*line;
 	//char	*str = malloc(10);
 	//read(fd, str, 10);
 	//write(1, str, 10);
-	while (i++ < 18)
+	printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
+	while (i++ < 10850)
 	{
 		line = get_next_line(fd);
-		printf("GNL --> %s", line);
+		printf("GNL %zu: %s", i, line);
 		free(line);
 	}
 	return (0);
