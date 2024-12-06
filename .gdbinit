@@ -9,5 +9,6 @@ b 57
 c
 display data.buffer
 display line
+display data.start
 display data.nl_pos
-display data.read_len
+display data.read_ret

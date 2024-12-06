@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:23:33 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/26 11:25:46 by juportie         ###   ########.fr       */
+/*   Updated: 2024/12/06 11:14:10 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ ssize_t	get_line_len(char *buffer, ssize_t max_len);
 
 struct static_data {
 	char	buffer[BUFFER_SIZE];
+	ssize_t	start;
 	ssize_t	nl_pos;
-	ssize_t read_len;
+	ssize_t read_ret;
 };
 
 #endif
