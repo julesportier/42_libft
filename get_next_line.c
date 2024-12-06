@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:18:21 by juportie          #+#    #+#             */
-/*   Updated: 2024/12/06 11:56:16 by juportie         ###   ########.fr       */
+/*   Updated: 2024/12/06 15:04:45 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,15 @@ char	*get_next_line(int fd)
 	{
 		line = ft_cat(line, data.buffer, data.nl_pos);
 		data.start = data.nl_pos;
-		if (data.start == -1)
-			data.nl_pos = get_line_len(data.buffer, BUFFER_SIZE);
-		else
+		data.nl_pos = get_line_len(data.buffer + data.start, BUFFER_SIZE - data.start);
+		if (data.nl_pos != -1)
+			data.nl_pos += data.start;
+		if (data.nl_pos <= BUFFER_SIZE + 1 && data.nl_pos >= 0)
 		{
-			data.nl_pos = get_line_len(data.buffer + data.start, BUFFER_SIZE - data.start);
-			if (data.nl_pos != -1)
-				data.nl_pos += data.start;
-		}
-		if (data.nl_pos <= BUFFER_SIZE && data.nl_pos >= 0)
-		{
-			if (data.nl_pos == BUFFER_SIZE || data.nl_pos == data.read_ret)
+			if (data.nl_pos == BUFFER_SIZE + 1 || data.nl_pos == data.read_ret)
 				data.nl_pos = -1;
 			return (line);
 		}
-		//data.nl_pos = -1;
 	}
 	while (data.nl_pos == -1)
 	{
@@ -58,9 +52,9 @@ char	*get_next_line(int fd)
 		}
 		line = ft_cat(line, data.buffer, data.nl_pos);
 		data.nl_pos = get_line_len(data.buffer, data.read_ret);
-		if (data.nl_pos <= BUFFER_SIZE && data.nl_pos >= 0)
+		if (data.nl_pos <= BUFFER_SIZE + 1 && data.nl_pos >= 0)
 		{
-			if (data.nl_pos == BUFFER_SIZE || data.nl_pos == data.read_ret)
+			if (data.nl_pos == BUFFER_SIZE + 1 || data.nl_pos == data.read_ret)
 				data.nl_pos = -1;
 			return (line);
 		}
@@ -84,7 +78,7 @@ int	main(void)
 	//read(fd, str, 10);
 	//write(1, str, 10);
 	printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
-	while (i++ < 85)
+	while (i++ < 10850)
 	{
 		line = get_next_line(fd);
 		printf("GNL %zu: %s", i, line);

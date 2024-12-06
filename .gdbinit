@@ -1,12 +1,12 @@
 layout src
 start
-b 27
-b 29
-b 42
+b 25
+b 28
+b 40
 b 47
-b 50
-b 57
-c
+b 51
+b 59
+continue
 display data.buffer
 display line
 display data.start
