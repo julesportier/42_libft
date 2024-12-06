@@ -34,12 +34,8 @@ char	*ft_cat(char *line, char *buffer, ssize_t nl_pos)
 
 	line_len = ft_strlen(line);
 	if (nl_pos == -1)
-	{
-		len = BUFFER_SIZE;
 		nl_pos = 0;
-	}
-	else
-		len = get_line_len(buffer + nl_pos, BUFFER_SIZE - nl_pos);
+	len = get_line_len(buffer + nl_pos, BUFFER_SIZE - nl_pos);
 	if (len == -1)
 		len = BUFFER_SIZE - nl_pos;
 	cat = malloc(sizeof(char) * (line_len + len + 1));
