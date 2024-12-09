@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-	#include "stdio.h"
 
 static ssize_t	ft_strlen(char *s)
 {
@@ -25,6 +24,21 @@ static ssize_t	ft_strlen(char *s)
 	return (i);
 }
 
+static char	*malloc_cat(
+	char *buffer, ssize_t *nl_pos, ssize_t line_len, ssize_t *len
+)
+{
+	char	*cat;
+
+	if (*nl_pos == -1)
+		*nl_pos = 0;
+	*len = get_line_len(buffer + *nl_pos, BUFFER_SIZE - *nl_pos);
+	if (*len == -1)
+		*len = BUFFER_SIZE - *nl_pos;
+	cat = malloc(sizeof(char) * (line_len + *len + 1));
+	return (cat);
+}
+
 char	*ft_cat(char *line, char *buffer, ssize_t nl_pos)
 {
 	ssize_t	line_len;
@@ -33,23 +47,15 @@ char	*ft_cat(char *line, char *buffer, ssize_t nl_pos)
 	ssize_t	len;
 
 	line_len = ft_strlen(line);
-	if (nl_pos == -1)
-		nl_pos = 0;
-	len = get_line_len(buffer + nl_pos, BUFFER_SIZE - nl_pos);
-	if (len == -1)
-		len = BUFFER_SIZE - nl_pos;
-	cat = malloc(sizeof(char) * (line_len + len + 1));
+	cat = malloc_cat(buffer, &nl_pos, line_len, &len);
 	if (cat == NULL)
 	{
 		free(line);
 		return (NULL);
 	}
-	i = 0;
-	while (i < line_len)
-	{
+	i = -1;
+	while (++i < line_len)
 		cat[i] = line[i];
-		i++;
-	}
 	free(line);
 	while (i < line_len + len)
 	{
@@ -71,7 +77,7 @@ ssize_t	get_line_len(char *buffer, ssize_t max_len)
 	while (i <= max_len)
 	{
 		i++;
- 		if (buffer[i - 1] == '\n')
+		if (buffer[i - 1] == '\n')
 			return (i);
 	}
 	return (-1);
