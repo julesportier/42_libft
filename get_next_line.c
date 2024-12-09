@@ -25,33 +25,34 @@ static int	line_is_filled(struct static_data *data)
 	return (0);
 }
 
+static char	*append_to_line(struct static_data *data, char *line)
+{
+	line = ft_cat(line, data->buffer, data->nl_pos);
+	if (data->nl_pos == -1)
+		data->start = 0;
+	else
+		data->start = data->nl_pos;
+	data->nl_pos = get_line_len(data->buffer + data->start, BUFFER_SIZE - data->start);
+	if (data->nl_pos != -1)
+		data->nl_pos += data->start;
+	return (line);
+}
+
 static char	*read_to_buffer(struct static_data *data, int fd, char **line)
 {
 	while (data->nl_pos == -1)
 	{
 		data->read_ret = read(fd, data->buffer, BUFFER_SIZE);
-		if (data->read_ret == 0)
-			return (*line);
 		if (data->read_ret == -1)
 		{
 			free(*line);
 			return (NULL);
 		}
-		*line = ft_cat(*line, data->buffer, data->nl_pos);
-		data->nl_pos = get_line_len(data->buffer, data->read_ret);
+		*line = append_to_line(data, *line);
 		if (line_is_filled(data))
 			return (*line);
 	}
 	return (NULL);
-}
-
-static void	append_to_line(struct static_data *data, char **line)
-{
-	*line = ft_cat(*line, data->buffer, data->nl_pos);
-	data->start = data->nl_pos;
-	data->nl_pos = get_line_len(data->buffer + data->start, BUFFER_SIZE - data->start);
-	if (data->nl_pos != -1)
-		data->nl_pos += data->start;
 }
 
 char	*get_next_line(int fd)
@@ -68,45 +69,12 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (data.nl_pos <= BUFFER_SIZE && data.nl_pos >= 0)
 	{
-		append_to_line(&data, &line);
+		line = append_to_line(&data, line);
 		if (line_is_filled(&data))
 			return (line);
 	}
-	//if (data.nl_pos <= BUFFER_SIZE && data.nl_pos >= 0)
-	//{
-	//	line = ft_cat(line, data.buffer, data.nl_pos);
-	//	data.start = data.nl_pos;
-	//	data.nl_pos = get_line_len(data.buffer + data.start, BUFFER_SIZE - data.start);
-	//	if (data.nl_pos != -1)
-	//		data.nl_pos += data.start;
-	//	if (data.nl_pos <= BUFFER_SIZE + 1 && data.nl_pos >= 0)
-	//	{
-	//		if (data.nl_pos == BUFFER_SIZE + 1 || data.nl_pos == data.read_ret)
-	//			data.nl_pos = -1;
-	//		return (line);
-	//	}
-	//}
 	if (data.nl_pos == -1)
 		return (read_to_buffer(&data, fd, &line));
-	//while (data.nl_pos == -1)
-	//{
-	//	data.read_ret = read(fd, data.buffer, BUFFER_SIZE);
-	//	if (data.read_ret == 0)
-	//		return (line);
-	//	if (data.read_ret == -1)
-	//	{
-	//		free(line);
-	//		return (NULL);
-	//	}
-	//	line = ft_cat(line, data.buffer, data.nl_pos);
-	//	data.nl_pos = get_line_len(data.buffer, data.read_ret);
-	//	if (data.nl_pos <= BUFFER_SIZE + 1 && data.nl_pos >= 0)
-	//	{
-	//		if (data.nl_pos == BUFFER_SIZE + 1 || data.nl_pos == data.read_ret)
-	//			data.nl_pos = -1;
-	//		return (line);
-	//	}
-	//}
 	return (line);
 }
 
