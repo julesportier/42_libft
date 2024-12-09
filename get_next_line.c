@@ -55,6 +55,8 @@ static char	*read_to_buffer(struct static_data *data, int fd, char **line)
 			free(*line);
 			return (NULL);
 		}
+		else if (data->read_ret == 0)
+			return (*line);
 		*line = append_to_line(data, *line);
 		if (line_is_filled(data))
 			return (*line);
@@ -93,16 +95,16 @@ int	main(void)
 //	if (argc)
 	//int	fd = open("lorem_ipsum.txt", O_RDONLY);
 	//int	fd = open("void.txt", O_RDONLY);
-	//int	fd = open("nonewline.txt", O_RDONLY);
+	int	fd = open("nonewline.txt", O_RDONLY);
 	//int	fd = open("bible.txt", O_RDONLY);
-	int	fd = open("alarecherchedutempsperdu.txt", O_RDONLY);
+	//int	fd = open("alarecherchedutempsperdu.txt", O_RDONLY);
 	ssize_t	i = 0;
 	char	*line;
 	//char	*str = malloc(10);
 	//read(fd, str, 10);
 	//write(1, str, 10);
 	printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
-	while (i++ < 10850)
+	while (i++ < 1)
 	{
 		line = get_next_line(fd);
 		printf("GNL %zu: %s", i, line);
