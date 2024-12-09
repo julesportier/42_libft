@@ -12,13 +12,17 @@
 
 #include "get_next_line.h"
 
-	#include <stdio.h>
-
 static int	line_is_filled(struct static_data *data)
 {
-	if (data->nl_pos <= BUFFER_SIZE + 1 && data->nl_pos >= 0)
+	if (
+		data->nl_pos <= BUFFER_SIZE + 1
+		&& data->nl_pos >= 0
+	)
 	{
-		if (data->nl_pos == BUFFER_SIZE + 1 || data->nl_pos == data->read_ret)
+		if (
+			data->nl_pos == BUFFER_SIZE + 1
+			|| data->nl_pos == data->read_ret
+		)
 			data->nl_pos = -1;
 		return (1);
 	}
@@ -32,7 +36,10 @@ static char	*append_to_line(struct static_data *data, char *line)
 		data->start = 0;
 	else
 		data->start = data->nl_pos;
-	data->nl_pos = get_line_len(data->buffer + data->start, BUFFER_SIZE - data->start);
+	data->nl_pos = get_line_len(
+			data->buffer + data->start,
+			BUFFER_SIZE - data->start
+			);
 	if (data->nl_pos != -1)
 		data->nl_pos += data->start;
 	return (line);
@@ -60,7 +67,7 @@ char	*get_next_line(int fd)
 	static struct static_data	data = {
 		.start = 0, .nl_pos = -1, .read_ret = BUFFER_SIZE
 	};
-	char			*line;
+	char						*line;
 
 	if (fd < 0)
 		return (NULL);
