@@ -74,7 +74,7 @@ ssize_t	get_line_len(char *buffer, ssize_t max_len)
 	ssize_t	i;
 
 	i = 0;
-	while (i <= max_len)
+	while (i < max_len)
 	{
 		i++;
 		if (buffer[i - 1] == '\n')

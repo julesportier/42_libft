@@ -15,14 +15,11 @@
 static int	line_is_filled(struct s_static_data *data)
 {
 	if (
-		data->nl_pos <= BUFFER_SIZE + 1
+		data->nl_pos <= data->read_ret
 		&& data->nl_pos >= 0
 	)
 	{
-		if (
-			data->nl_pos == BUFFER_SIZE + 1
-			|| data->nl_pos == data->read_ret
-		)
+		if (data->nl_pos == data->read_ret)
 			data->nl_pos = -1;
 		return (1);
 	}
