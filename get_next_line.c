@@ -50,6 +50,10 @@ static char	*read_to_buffer(struct s_static_data *data, int fd, char **line)
 		if (data->read_ret == -1)
 		{
 			free(*line);
+			// The line below permits the next call to read
+			// even after an error occured in this call.
+			// IT'S NOT THE SUBJECT.
+			//data->read_ret = BUFFER_SIZE;
 			return (NULL);
 		}
 		else if (data->read_ret == 0)
