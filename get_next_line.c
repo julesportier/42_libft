@@ -75,15 +75,13 @@ char	*get_next_line(int fd)
 	if (fd < 0)
 		return (NULL);
 	line = NULL;
-	if (data.read_ret < BUFFER_SIZE && data.nl_pos == -1)
-		return (NULL);
 	if (data.nl_pos <= data.read_ret && data.nl_pos >= 0)
 	{
 		line = append_to_line(&data, line);
 		if (line_is_filled(&data))
 			return (line);
 	}
-	if (data.nl_pos == -1)
+	if (data.read_ret == BUFFER_SIZE && data.nl_pos == -1)
 		return (read_to_buffer(&data, fd, &line));
 	return (line);
 }
