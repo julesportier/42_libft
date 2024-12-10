@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-static int	line_is_filled(struct static_data *data)
+static int	line_is_filled(struct s_static_data *data)
 {
 	if (
 		data->nl_pos <= BUFFER_SIZE + 1
@@ -29,7 +29,7 @@ static int	line_is_filled(struct static_data *data)
 	return (0);
 }
 
-static char	*append_to_line(struct static_data *data, char *line)
+static char	*append_to_line(struct s_static_data *data, char *line)
 {
 	line = ft_cat(line, data->buffer, data->nl_pos);
 	if (data->nl_pos == -1)
@@ -45,7 +45,7 @@ static char	*append_to_line(struct static_data *data, char *line)
 	return (line);
 }
 
-static char	*read_to_buffer(struct static_data *data, int fd, char **line)
+static char	*read_to_buffer(struct s_static_data *data, int fd, char **line)
 {
 	while (data->nl_pos == -1)
 	{
@@ -66,7 +66,7 @@ static char	*read_to_buffer(struct static_data *data, int fd, char **line)
 
 char	*get_next_line(int fd)
 {
-	static struct static_data	data = {
+	static struct s_static_data	data = {
 		.start = 0, .nl_pos = -1, .read_ret = BUFFER_SIZE
 	};
 	char						*line;
