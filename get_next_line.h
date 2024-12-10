@@ -20,16 +20,16 @@
 #  define BUFFER_SIZE 50
 # endif
 
-char	*ft_cat(char *line, char *buffer, ssize_t nl_pos);
-//ssize_t	fill_buffer(char *buffer);
+char	*ft_cat(char *line, char *buffer, ssize_t nl_pos, ssize_t read_ret);
 ssize_t	get_line_len(char *buffer, ssize_t max_len);
 char	*get_next_line(int fd);
 
-struct static_data {
+struct s_static_data
+{
 	char	buffer[BUFFER_SIZE];
 	ssize_t	start;
 	ssize_t	nl_pos;
-	ssize_t read_ret;
+	ssize_t	read_ret;
 };
 
 #endif
