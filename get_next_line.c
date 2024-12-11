@@ -26,9 +26,8 @@ static int	line_is_filled(struct s_static_data *data)
 	return (0);
 }
 
-static char	*append_to_line(struct s_static_data *data, char *line)
+void	update_data_positions(struct s_static_data *data)
 {
-	line = ft_cat(line, data->buffer, data->nl_pos, data->read_ret);
 	if (data->nl_pos == -1)
 		data->start = 0;
 	else
@@ -39,7 +38,6 @@ static char	*append_to_line(struct s_static_data *data, char *line)
 			);
 	if (data->nl_pos != -1)
 		data->nl_pos += data->start;
-	return (line);
 }
 
 //#include <string.h>
@@ -70,7 +68,8 @@ static char	*read_to_buffer(struct s_static_data *data, int fd, char **line)
 			//memset(data->buffer, '\0', BUFFER_SIZE);
 			return (NULL);
 		}
-		*line = append_to_line(data, *line);
+		update_data_positions(data);
+		*line = ft_cat(*line, data);
 		if (line_is_filled(data))
 			return (*line);
 	}
@@ -89,7 +88,8 @@ char	*get_next_line(int fd)
 	line = NULL;
 	if (data.nl_pos <= data.read_ret && data.nl_pos >= 0)
 	{
-		line = append_to_line(&data, line);
+		update_data_positions(&data);
+		line = ft_cat(line, &data);
 		if (line_is_filled(&data))
 			return (line);
 	}
@@ -103,19 +103,19 @@ char	*get_next_line(int fd)
 //int	main(void)
 //{
 //	//int	fd;
-//	//int	fd = open("lorem_ipsum.txt", O_RDONLY);
+//	int	fd = open("lorem_ipsum.txt", O_RDONLY);
 //	//int	fd = open("multiple_lines_no_nl.txt", O_RDONLY);
 //	//int	fd = open("void.txt", O_RDONLY);
 //	//int	fd = open("nonewline.txt", O_RDONLY);
 //	//int	fd = open("bible.txt", O_RDONLY);
 //	//int	fd = open("alarecherchedutempsperdu.txt", O_RDONLY);
-//	int	fd = open("test.txt", O_RDONLY);
+//	//int	fd = open("test.txt", O_RDONLY);
 //	ssize_t	i = 0;
 //	char	*line;
 //
-//	//printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
+//	printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
 //	//fd = open("multiple_lines_no_nl.txt", O_RDONLY);
-//	while (i++ < 3)
+//	while (i++ < 17)
 //	{
 //		line = get_next_line(fd);
 //		printf("GNL%zu: %s", i, line);

@@ -25,21 +25,20 @@ static ssize_t	ft_strlen(char *s)
 }
 
 static char	*malloc_cat(
-	char *buffer, ssize_t *nl_pos, ssize_t line_len, ssize_t *len, ssize_t read_ret
+	struct s_static_data *data, ssize_t line_len, ssize_t *len
 )
 {
 	char	*cat;
 
-	if (*nl_pos == -1)
-		*nl_pos = 0;
-	*len = get_line_len(buffer + *nl_pos, read_ret - *nl_pos);
-	if (*len == -1)
-		*len = read_ret - *nl_pos;
+	if (data->nl_pos == -1)
+		*len = data->read_ret - data->start;
+	else
+		*len = data->nl_pos - data->start;
 	cat = malloc(sizeof(char) * (line_len + *len + 1));
 	return (cat);
 }
 
-char	*ft_cat(char *line, char *buffer, ssize_t nl_pos, ssize_t read_ret)
+char	*ft_cat(char *line, struct s_static_data *data)
 {
 	ssize_t	line_len;
 	char	*cat;
@@ -47,7 +46,7 @@ char	*ft_cat(char *line, char *buffer, ssize_t nl_pos, ssize_t read_ret)
 	ssize_t	len;
 
 	line_len = ft_strlen(line);
-	cat = malloc_cat(buffer, &nl_pos, line_len, &len, read_ret);
+	cat = malloc_cat(data, line_len, &len);
 	if (cat == NULL)
 	{
 		free(line);
@@ -59,7 +58,7 @@ char	*ft_cat(char *line, char *buffer, ssize_t nl_pos, ssize_t read_ret)
 	free(line);
 	while (i < line_len + len)
 	{
-		cat[i] = buffer[i - line_len + nl_pos];
+		cat[i] = (data->buffer)[i - line_len + data->start];
 		i++;
 	}
 	cat[i] = '\0';
