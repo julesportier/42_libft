@@ -42,22 +42,34 @@ static char	*append_to_line(struct s_static_data *data, char *line)
 	return (line);
 }
 
+//#include <string.h>
 static char	*read_to_buffer(struct s_static_data *data, int fd, char **line)
 {
 	while (data->nl_pos == -1)
 	{
 		data->read_ret = read(fd, data->buffer, BUFFER_SIZE);
-		if (data->read_ret == -1)
+		//DEBUG
+		//static int	i;
+		//if (i++ == 2)
+		//	data->read_ret = -1;
+		//END DEBUG
+		if (data->read_ret == 0)
 		{
-			free(*line);
 			// The line below permits the next call to read
 			// even after an error occured in this call.
 			// IT'S NOT THE SUBJECT.
-			//data->read_ret = BUFFER_SIZE;
+			data->read_ret = BUFFER_SIZE;
+			data->nl_pos = -1;
+			return (*line);
+		}
+		else if (data->read_ret == -1)
+		{
+			data->read_ret = BUFFER_SIZE;
+			data->nl_pos = -1;
+			free(*line);
+			//memset(data->buffer, '\0', BUFFER_SIZE);
 			return (NULL);
 		}
-		else if (data->read_ret == 0)
-			return (*line);
 		*line = append_to_line(data, *line);
 		if (line_is_filled(data))
 			return (*line);
@@ -89,25 +101,37 @@ char	*get_next_line(int fd)
 #include <stdio.h>
 #include <fcntl.h>
 int	main(void)
-//int	main(int argc, char *argv[])
 {
-//	if (argc)
+	//int	fd;
 	//int	fd = open("lorem_ipsum.txt", O_RDONLY);
+	//int	fd = open("multiple_lines_no_nl.txt", O_RDONLY);
 	//int	fd = open("void.txt", O_RDONLY);
-	int	fd = open("nonewline.txt", O_RDONLY);
+	//int	fd = open("nonewline.txt", O_RDONLY);
 	//int	fd = open("bible.txt", O_RDONLY);
 	//int	fd = open("alarecherchedutempsperdu.txt", O_RDONLY);
+	int	fd = open("test.txt", O_RDONLY);
 	ssize_t	i = 0;
 	char	*line;
-	//char	*str = malloc(10);
-	//read(fd, str, 10);
-	//write(1, str, 10);
+
 	printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
-	while (i++ < 1)
+	//fd = open("multiple_lines_no_nl.txt", O_RDONLY);
+	while (i++ < 6)
 	{
 		line = get_next_line(fd);
-		printf("GNL %zu: %s", i, line);
+		printf("GNL(fd1)%zu: %s", i, line);
+		//printf("%s", line);
 		free(line);
 	}
+	close(fd);
+	//fd = open("test.txt", O_RDONLY);
+	//while (i < 18)
+	//{
+	//	line = get_next_line(fd);
+	//	printf("GNL(fd2)%zu: %s", i, line);
+	//	//printf("%s", line);
+	//	free(line);
+	//	i++;
+	//}
+	//close(fd);
 	return (0);
 }
