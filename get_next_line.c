@@ -97,41 +97,41 @@ char	*get_next_line(int fd)
 		return (read_to_buffer(&data, fd, &line));
 	return (line);
 }
-
-#include <stdio.h>
-#include <fcntl.h>
-int	main(void)
-{
-	//int	fd;
-	//int	fd = open("lorem_ipsum.txt", O_RDONLY);
-	//int	fd = open("multiple_lines_no_nl.txt", O_RDONLY);
-	//int	fd = open("void.txt", O_RDONLY);
-	//int	fd = open("nonewline.txt", O_RDONLY);
-	//int	fd = open("bible.txt", O_RDONLY);
-	//int	fd = open("alarecherchedutempsperdu.txt", O_RDONLY);
-	int	fd = open("test.txt", O_RDONLY);
-	ssize_t	i = 0;
-	char	*line;
-
-	printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
-	//fd = open("multiple_lines_no_nl.txt", O_RDONLY);
-	while (i++ < 6)
-	{
-		line = get_next_line(fd);
-		printf("GNL(fd1)%zu: %s", i, line);
-		//printf("%s", line);
-		free(line);
-	}
-	close(fd);
-	//fd = open("test.txt", O_RDONLY);
-	//while (i < 18)
-	//{
-	//	line = get_next_line(fd);
-	//	printf("GNL(fd2)%zu: %s", i, line);
-	//	//printf("%s", line);
-	//	free(line);
-	//	i++;
-	//}
-	//close(fd);
-	return (0);
-}
+//
+//#include <stdio.h>
+//#include <fcntl.h>
+//int	main(void)
+//{
+//	//int	fd;
+//	//int	fd = open("lorem_ipsum.txt", O_RDONLY);
+//	//int	fd = open("multiple_lines_no_nl.txt", O_RDONLY);
+//	//int	fd = open("void.txt", O_RDONLY);
+//	//int	fd = open("nonewline.txt", O_RDONLY);
+//	//int	fd = open("bible.txt", O_RDONLY);
+//	//int	fd = open("alarecherchedutempsperdu.txt", O_RDONLY);
+//	int	fd = open("test.txt", O_RDONLY);
+//	ssize_t	i = 0;
+//	char	*line;
+//
+//	//printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
+//	//fd = open("multiple_lines_no_nl.txt", O_RDONLY);
+//	while (i++ < 3)
+//	{
+//		line = get_next_line(fd);
+//		printf("GNL%zu: %s", i, line);
+//		//printf("%s", line);
+//		free(line);
+//	}
+//	close(fd);
+//	//fd = open("test.txt", O_RDONLY);
+//	//while (i < 18)
+//	//{
+//	//	line = get_next_line(fd);
+//	//	printf("GNL(fd2)%zu: %s", i, line);
+//	//	//printf("%s", line);
+//	//	free(line);
+//	//	i++;
+//	//}
+//	//close(fd);
+//	return (0);
+//}
