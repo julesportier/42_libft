@@ -40,22 +40,13 @@ void	update_data_positions(struct s_static_data *data)
 		data->nl_pos += data->start;
 }
 
-//#include <string.h>
 static char	*read_to_buffer(struct s_static_data *data, int fd, char **line)
 {
 	while (data->nl_pos == -1)
 	{
 		data->read_ret = read(fd, data->buffer, BUFFER_SIZE);
-		//DEBUG
-		//static int	i;
-		//if (i++ == 2)
-		//	data->read_ret = -1;
-		//END DEBUG
 		if (data->read_ret <= 0)
 		{
-			// The line below permits the next call to read
-			// even after an error occured in this call.
-			// IT'S NOT THE SUBJECT.
 			if (data->read_ret == -1)
 			{
 				free(*line);
@@ -64,7 +55,6 @@ static char	*read_to_buffer(struct s_static_data *data, int fd, char **line)
 			data->read_ret = BUFFER_SIZE;
 			data->nl_pos = -1;
 			data->start = 0;
-			//memset(data->buffer, '\0', BUFFER_SIZE);
 			return (*line);
 		}
 		update_data_positions(data);
