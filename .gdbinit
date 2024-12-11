@@ -15,7 +15,7 @@ start
 #b 47
 #b 51
 #b 59
-b 86
+b 85
 continue
 display data.buffer
 display *line
