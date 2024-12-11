@@ -82,7 +82,7 @@ char	*get_next_line(int fd)
 	};
 	char						*line;
 
-	if (fd < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = NULL;
 	if (data.nl_pos <= data.read_ret && data.nl_pos >= 0)
