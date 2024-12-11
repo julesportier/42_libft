@@ -86,29 +86,52 @@ char	*get_next_line(int fd)
 		return (read_to_buffer(&data, fd, &line));
 	return (line);
 }
-//
+// BASIC MAIN
 //#include <stdio.h>
 //#include <fcntl.h>
 //int	main(void)
 //{
-//	int	fd;
-//	//int	fd = open("lorem_ipsum.txt", O_RDONLY);
+//	int	fd = open("lorem_ipsum.txt", O_RDONLY);
 //	//int	fd = open("multiple_lines_no_nl.txt", O_RDONLY);
 //	//int	fd = open("void.txt", O_RDONLY);
 //	//int	fd = open("nonewline.txt", O_RDONLY);
 //	//int	fd = open("bible.txt", O_RDONLY);
 //	//int	fd = open("alarecherchedutempsperdu.txt", O_RDONLY);
-//	//int	fd = open("test.txt", O_RDONLY);
+//	size_t	i = 0;
+//	char	*line;
+//
+//	printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
+//	while (i++ < 18)
+//	{
+//		line = get_next_line(fd);
+//		printf("GNL%zu: %s", i, line);
+//		free(line);
+//	}
+//	close(fd);
+//	return (0);
+//}
+// MAIN FOR READ_ERROR
+// ADD THIS LINES INTO READ_TO_BUFFER()
+	//DEBUG
+	//static int	i;
+	//if (i++ == 2)
+	//	data->read_ret = -1;
+	//END DEBUG
+//#include <stdio.h>
+//#include <fcntl.h>
+//int	main(void)
+//{
+//	int	fd;
 //	size_t	i = 0;
 //	char	*line;
 //
 //	printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
 //	fd = open("read_error.txt", O_RDONLY);
+//	// COMPARISON MUST BE CONSISTENT WITH TRIGGERED READ ERROR
 //	while (i++ < 2)
 //	{
 //		line = get_next_line(fd);
 //		printf("GNL(fd1)%zu: %s", i, line);
-//		//printf("%s", line);
 //		free(line);
 //	}
 //	close(fd);
@@ -117,9 +140,28 @@ char	*get_next_line(int fd)
 //	{
 //		line = get_next_line(fd);
 //		printf("GNL(fd2)%zu: %s", i, line);
-//		//printf("%s", line);
 //		free(line);
 //		i++;
+//	}
+//	close(fd);
+//	return (0);
+//}
+// MAIN FOR USE WITH test.bash
+// THE SCRIPT CREATE THE FILE
+//#include <stdio.h>
+//#include <fcntl.h>
+//int	main(void)
+//{
+//	int	fd;
+//	size_t	i = 0;
+//	char	*line;
+//
+//	fd = open("test.txt", O_RDONLY);
+//	while (i++ < 3)
+//	{
+//		line = get_next_line(fd);
+//		printf("GNL%zu: %s", i, line);
+//		free(line);
 //	}
 //	close(fd);
 //	return (0);
