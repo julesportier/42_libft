@@ -29,30 +29,30 @@ $'0123456789\n012345678\n'
 # echo "BUFFER_SIZE=1"
 # for str in "${limits[@]}"
 # do
-# 	echo -n "${str}" > $of
-# 	echo -n 'test.txt -> \n' ; cat $of | cat -e ; echo '---'
+#	echo -n "${str}" > $of
+#	echo "test.txt -> " ; cat -e $of ; echo '---'
 # 	./$exe | cat -e
 # 	echo $'\n'
 # done
 
-cc -Wall -Wextra -Werror -g3 -D BUFFER_SIZE=10 *.c -o $exe
-echo "BUFFER_SIZE=10"
+# cc -Wall -Wextra -Werror -g3 -D BUFFER_SIZE=10 *.c -o $exe
+# echo "BUFFER_SIZE=10"
+# for str in "${limits[@]}"
+# do
+#	echo -n "${str}" > $of
+#	echo "test.txt -> " ; cat -e $of ; echo '---'
+# 	valgrind --leak-check=full ./$exe | cat -e
+# 	echo $'\n'
+# done
+
+cc -Wall -Wextra -Werror -g3 -D BUFFER_SIZE=1000000 *.c -o $exe
+echo "BUFFER_SIZE=1000000"
 for str in "${limits[@]}"
 do
 	echo -n "${str}" > $of
-	echo -n $'test.txt -> \n' ; cat $of | cat -e ; echo '---'
-	valgrind --leak-check=full ./$exe | cat -e
+	echo "test.txt -> " ; cat -e $of ; echo '---'
+ 	./$exe | cat -e
 	echo $'\n'
 done
-
-# cc -Wall -Wextra -Werror -g3 -D BUFFER_SIZE=1000000 *.c -o $exe
-# echo "BUFFER_SIZE=1000000"
-# for str in "${limits[@]}"
-# do
-# 	echo -n "${str}" > $of
-# 	echo -n $'test.txt -> \n' ; cat $of | cat -e ; echo '---'
-# 	./$exe | cat -e
-# 	echo $'\n'
-# done
 
 rm $exe $of
