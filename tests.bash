@@ -25,6 +25,7 @@ $'0123456789\n012345678'
 $'0123456789\n012345678\n'
 )
 
+
 # cc -Wall -Wextra -Werror -g3 -D BUFFER_SIZE=1 *.c -o $exe
 # echo "BUFFER_SIZE=1"
 # for str in "${limits[@]}"
@@ -54,5 +55,12 @@ do
  	./$exe | cat -e
 	echo $'\n'
 done
+
+#test null inside str
+echo "test null inside str"
+printf '%b' '012345\x006789\n012345678\n' > $of
+echo "test.txt -> " ; cat -e $of ; echo '---'
+./$exe | cat -e
+echo $'\n'
 
 rm $exe $of

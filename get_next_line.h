@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:23:33 by juportie          #+#    #+#             */
-/*   Updated: 2024/12/06 11:14:10 by juportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:53:27 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ struct s_static_data
 	ssize_t	start;
 	ssize_t	nl_pos;
 	ssize_t	read_ret;
+	ssize_t	ret_len;
 };
 
 char	*ft_cat(char *line, struct s_static_data *data);

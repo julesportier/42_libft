@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:18:21 by juportie          #+#    #+#             */
-/*   Updated: 2024/12/06 15:04:45 by juportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:28:23 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ char	*get_next_line(int fd)
 //	//int	fd = open("nonewline.txt", O_RDONLY);
 //	//int	fd = open("bible.txt", O_RDONLY);
 //	//int	fd = open("alarecherchedutempsperdu.txt", O_RDONLY);
+//	//int	fd = open("get_next_line_utils.c", O_RDONLY);
 //	size_t	i = 0;
 //	char	*line;
 //
@@ -160,7 +161,10 @@ char	*get_next_line(int fd)
 //	while (i++ < 3)
 //	{
 //		line = get_next_line(fd);
-//		printf("GNL%zu: %s", i, line);
+//		//printf("GNL%zu: %s", i, line);
+//		write(1, "GNL: ", 5);
+//		write(1, line, 23);
+//		write(1, "\n", 1);
 //		free(line);
 //	}
 //	close(fd);

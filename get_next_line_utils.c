@@ -6,22 +6,33 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:41:10 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/28 13:14:49 by juportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:26:03 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static ssize_t	ft_strlen(char *s)
+static ssize_t	update_ret_len(char *s, struct s_static_data *data)
 {
-	ssize_t	i;
+	ssize_t	len;
 
 	if (s == NULL)
-		return (0);
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	{
+		len = 0;
+		if (data->nl_pos == -1)
+			data->ret_len = data->read_ret - data->start;
+		else
+			data->ret_len = data->nl_pos;
+	}
+	else
+	{
+		len = data->ret_len;
+		if (data->nl_pos == -1)
+			data->ret_len += data->read_ret - data->start;
+		else
+			data->ret_len += data->nl_pos;
+	}
+	return (len);
 }
 
 static char	*malloc_cat(
@@ -45,7 +56,7 @@ char	*ft_cat(char *line, struct s_static_data *data)
 	ssize_t	i;
 	ssize_t	len;
 
-	line_len = ft_strlen(line);
+	line_len = update_ret_len(line, data);
 	cat = malloc_cat(data, line_len, &len);
 	if (cat == NULL)
 	{
