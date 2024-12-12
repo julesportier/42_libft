@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:41:10 by juportie          #+#    #+#             */
-/*   Updated: 2024/12/12 15:26:03 by juportie         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:47:34 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ char	*ft_cat(char *line, struct s_static_data *data)
 	cat = malloc_cat(data, line_len, &len);
 	if (cat == NULL)
 	{
+		data->read_ret = BUFFER_SIZE;
+		data->nl_pos = -1;
 		free(line);
 		return (NULL);
 	}
