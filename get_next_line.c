@@ -19,8 +19,12 @@ static int	line_is_filled(struct s_static_data *data)
 		&& data->nl_pos >= 0
 	)
 	{
-		if (data->nl_pos == data->read_ret)
-			data->nl_pos = -1;
+		if (data->malloc_error == -1)
+		{
+			data->ret_len = 0;
+			if (data->nl_pos == data->read_ret)
+				data->nl_pos = -1;
+		}
 		return (1);
 	}
 	return (0);
@@ -28,16 +32,19 @@ static int	line_is_filled(struct s_static_data *data)
 
 void	update_data_positions(struct s_static_data *data)
 {
-	if (data->nl_pos == -1)
-		data->start = 0;
-	else
-		data->start = data->nl_pos;
-	data->nl_pos = get_line_len(
-			data->buffer + data->start,
-			data->read_ret - data->start
-			);
-	if (data->nl_pos != -1)
-		data->nl_pos += data->start;
+	if (data->malloc_error == -1)
+	{
+		if (data->nl_pos == -1)
+			data->start = 0;
+		else
+			data->start = data->nl_pos;
+		data->nl_pos = get_line_len(
+				data->buffer + data->start,
+				data->read_ret - data->start
+				);
+		if (data->nl_pos != -1)
+			data->nl_pos += data->start;
+	}
 }
 
 static char	*read_to_buffer(struct s_static_data *data, int fd, char **line)
@@ -59,7 +66,7 @@ static char	*read_to_buffer(struct s_static_data *data, int fd, char **line)
 		}
 		update_data_positions(data);
 		*line = ft_cat(*line, data);
-		if (line_is_filled(data))
+		if (line_is_filled(data) || data->malloc_error != -1)
 			return (*line);
 	}
 	return (NULL);
@@ -68,7 +75,7 @@ static char	*read_to_buffer(struct s_static_data *data, int fd, char **line)
 char	*get_next_line(int fd)
 {
 	static struct s_static_data	data = {
-		.start = 0, .nl_pos = -1, .read_ret = BUFFER_SIZE
+		.nl_pos = -1, .read_ret = BUFFER_SIZE, .malloc_error = -1
 	};
 	char						*line;
 
@@ -86,3 +93,24 @@ char	*get_next_line(int fd)
 		return (read_to_buffer(&data, fd, &line));
 	return (line);
 }
+//
+//#include <stdio.h>
+//#include <fcntl.h>
+//int main(void)
+//{
+//	int fd = open("alarecherchedutempsperdu.txt", O_RDONLY);
+//
+//	char	*line;
+//	int i = 0;
+//
+//	while (i < 6)
+//	{
+//		line = get_next_line(fd);
+//		if (line == NULL)
+//			printf("NULL ret\n");
+//		else
+//			printf("%s", line);
+//		free(line);
+//		i++;
+//	}
+//}

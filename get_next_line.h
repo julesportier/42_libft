@@ -27,6 +27,7 @@ struct s_static_data
 	ssize_t	nl_pos;
 	ssize_t	read_ret;
 	ssize_t	ret_len;
+	ssize_t	malloc_error;
 };
 
 char	*ft_cat(char *line, struct s_static_data *data);

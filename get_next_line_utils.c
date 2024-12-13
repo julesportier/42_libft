@@ -12,40 +12,55 @@
 
 #include "get_next_line.h"
 
-static ssize_t	update_ret_len(char *s, struct s_static_data *data)
+static void	update_ret_len(char *s, struct s_static_data *data, ssize_t *len)
 {
-	ssize_t	len;
-
-	if (s == NULL)
+	if (data->malloc_error == -1)
 	{
-		len = 0;
-		if (data->nl_pos == -1)
-			data->ret_len = data->read_ret - data->start;
+		*len = data->ret_len;
+		if (s == NULL)
+		{
+			if (data->nl_pos == -1)
+				data->ret_len = data->read_ret - data->start;
+			else
+				data->ret_len = data->nl_pos - data->start;
+		}
 		else
-			data->ret_len = data->nl_pos;
+		{
+			if (data->nl_pos == -1)
+				data->ret_len += data->read_ret - data->start;
+			else
+				data->ret_len += data->nl_pos - data->start;
+		}
 	}
 	else
 	{
-		len = data->ret_len;
-		if (data->nl_pos == -1)
-			data->ret_len += data->read_ret - data->start;
-		else
-			data->ret_len += data->nl_pos;
+		*len = data->malloc_error;
+		data->malloc_error = -1;
 	}
-	return (len);
 }
 
-static char	*malloc_cat(
-	struct s_static_data *data, ssize_t line_len, ssize_t *len
-)
+static char	*malloc_cat(struct s_static_data *data, ssize_t line_len)
 {
 	char	*cat;
 
-	if (data->nl_pos == -1)
-		*len = data->read_ret - data->start;
+	if (data->read_ret > 0)
+	{
+		//DEBUG
+		//static ssize_t i;
+		//if(i++ == 0)
+		//	cat = NULL;
+		//else
+		//END DEBUG
+		cat = malloc(sizeof(char) * (data->ret_len + 1));
+		if (cat == NULL)
+			data->malloc_error = line_len;
+	}
 	else
-		*len = data->nl_pos - data->start;
-	cat = malloc(sizeof(char) * (line_len + *len + 1));
+	{
+		cat = NULL;
+		data->read_ret = BUFFER_SIZE;
+		data->nl_pos = -1;
+	}
 	return (cat);
 }
 
@@ -54,14 +69,11 @@ char	*ft_cat(char *line, struct s_static_data *data)
 	ssize_t	line_len;
 	char	*cat;
 	ssize_t	i;
-	ssize_t	len;
 
-	line_len = update_ret_len(line, data);
-	cat = malloc_cat(data, line_len, &len);
+	update_ret_len(line, data, &line_len);
+	cat = malloc_cat(data, line_len);
 	if (cat == NULL)
 	{
-		data->read_ret = BUFFER_SIZE;
-		data->nl_pos = -1;
 		free(line);
 		return (NULL);
 	}
@@ -69,7 +81,7 @@ char	*ft_cat(char *line, struct s_static_data *data)
 	while (++i < line_len)
 		cat[i] = line[i];
 	free(line);
-	while (i < line_len + len)
+	while (i < data->ret_len)
 	{
 		cat[i] = (data->buffer)[i - line_len + data->start];
 		i++;
