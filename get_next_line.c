@@ -6,21 +6,23 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:32:31 by juportie          #+#    #+#             */
-/*   Updated: 2024/12/16 18:38:46 by juportie         ###   ########.fr       */
+/*   Updated: 2024/12/16 19:11:18 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 static char	*fill_buffer(char *buffer, int fd, char *line, ssize_t read_ret)
 {
 	while (!buffer[0])
 	{
 		read_ret = read(fd, buffer, BUFFER_SIZE);
+		if (read_ret >= 0)
+			buffer[read_ret] = '\0';
+		else
+			buffer[0] = '\0';
 		if (read_ret <= 0)
 		{
-			shift_buffer(buffer, BUFFER_SIZE);
 			if (read_ret == -1)
 			{
 				free(line);
@@ -38,8 +40,8 @@ static char	*fill_buffer(char *buffer, int fd, char *line, ssize_t read_ret)
 char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
-	char	*line;
-	ssize_t	read_ret;
+	char		*line;
+	ssize_t		read_ret;
 
 	line = NULL;
 	read_ret = 0;
@@ -60,11 +62,11 @@ char	*get_next_line(int fd)
 //#include <fcntl.h>
 //int	main(void)
 //{
-//	int	fd = open("41_no_nl.txt", O_RDONLY);
+//	int	fd = open("alarecherchedutempsperdu.txt", O_RDONLY);
 //	ssize_t	i = 0;
 //	char	*line = NULL;
 //
-//	while (i < 5)
+//	while (i < 10850)
 //	{
 //		line = get_next_line(fd);
 //		printf("<|%s|>", line);

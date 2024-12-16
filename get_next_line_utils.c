@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:32:51 by juportie          #+#    #+#             */
-/*   Updated: 2024/12/16 18:39:26 by juportie         ###   ########.fr       */
+/*   Updated: 2024/12/16 19:11:42 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static ssize_t	ft_len(char *str)
 	ssize_t	i;
 
 	i = 0;
-	
 	if (str)
 	{
 		while (str[i] && str[i] != '\n')
@@ -38,11 +37,7 @@ void	shift_buffer(char *buffer, ssize_t buffer_len)
 		buffer[i] = buffer[i + buffer_len];
 		i++;
 	}
-	while (i < BUFFER_SIZE)
-	{
-		buffer[i] = '\0';
-		i++;
-	}
+	buffer[i] = '\0';
 }
 
 char	*ft_cat(char *line, char *buffer)
@@ -84,7 +79,7 @@ ssize_t	line_is_filled(char *line)
 		while (line[i])
 		{
 			if (line[i] == '\n')
-				return(1);
+				return (1);
 			i++;
 		}
 	}
