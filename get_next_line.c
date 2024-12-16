@@ -15,10 +15,18 @@
 static int	line_is_filled(struct s_static_data *data)
 {
 	if (
-		data->nl_pos <= data->read_ret
-		&& data->nl_pos >= 0
+		(data->nl_pos <= data->read_ret
+		&& data->nl_pos >= 0)
+		|| (data->read_ret < BUFFER_SIZE && data-> nl_pos == -1)
 	)
 	{
+		if (data->read_ret < BUFFER_SIZE && data-> nl_pos == -1)
+		{
+			data->read_ret = BUFFER_SIZE;
+			data->nl_pos = -1;
+			data->start = 0;
+			data->ret_len = 0;
+		}
 		if (data->malloc_error == -1)
 		{
 			data->ret_len = 0;
@@ -51,6 +59,13 @@ static char	*read_to_buffer(struct s_static_data *data, int fd, char **line)
 {
 	while (data->nl_pos == -1)
 	{
+		//DEBUG
+		//static ssize_t i = -1;
+		//i++;
+		//if (i == 1 || i == 2)
+		//	data->read_ret = -1;
+		//else
+		//ENDDEBUG
 		data->read_ret = read(fd, data->buffer, BUFFER_SIZE);
 		if (data->read_ret <= 0)
 		{
@@ -62,11 +77,12 @@ static char	*read_to_buffer(struct s_static_data *data, int fd, char **line)
 			data->read_ret = BUFFER_SIZE;
 			data->nl_pos = -1;
 			data->start = 0;
+			data->ret_len = 0;
 			return (*line);
 		}
 		update_data_positions(data);
 		*line = ft_cat(*line, data);
-		if (line_is_filled(data) || data->malloc_error != -1)
+		if (data->malloc_error != -1 || line_is_filled(data))
 			return (*line);
 	}
 	return (NULL);
@@ -93,24 +109,3 @@ char	*get_next_line(int fd)
 		return (read_to_buffer(&data, fd, &line));
 	return (line);
 }
-//
-//#include <stdio.h>
-//#include <fcntl.h>
-//int main(void)
-//{
-//	int fd = open("alarecherchedutempsperdu.txt", O_RDONLY);
-//
-//	char	*line;
-//	int i = 0;
-//
-//	while (i < 6)
-//	{
-//		line = get_next_line(fd);
-//		if (line == NULL)
-//			printf("NULL ret\n");
-//		else
-//			printf("%s", line);
-//		free(line);
-//		i++;
-//	}
-//}
