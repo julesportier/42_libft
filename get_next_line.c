@@ -5,107 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 10:18:21 by juportie          #+#    #+#             */
-/*   Updated: 2024/12/12 18:01:55 by juportie         ###   ########.fr       */
+/*   Created: 2024/12/16 16:32:31 by juportie          #+#    #+#             */
+/*   Updated: 2024/12/16 18:38:46 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	line_is_filled(struct s_static_data *data)
-{
-	if (
-		(data->nl_pos <= data->read_ret
-		&& data->nl_pos >= 0)
-		|| (data->read_ret < BUFFER_SIZE && data-> nl_pos == -1)
-	)
-	{
-		if (data->read_ret < BUFFER_SIZE && data-> nl_pos == -1)
-		{
-			data->read_ret = BUFFER_SIZE;
-			data->nl_pos = -1;
-			data->start = 0;
-			data->ret_len = 0;
-		}
-		if (data->malloc_error == -1)
-		{
-			data->ret_len = 0;
-			if (data->nl_pos == data->read_ret)
-				data->nl_pos = -1;
-		}
-		return (1);
-	}
-	return (0);
-}
 
-void	update_data_positions(struct s_static_data *data)
+static char	*fill_buffer(char *buffer, int fd, char *line, ssize_t read_ret)
 {
-	if (data->malloc_error == -1)
+	while (!buffer[0])
 	{
-		if (data->nl_pos == -1)
-			data->start = 0;
-		else
-			data->start = data->nl_pos;
-		data->nl_pos = get_line_len(
-				data->buffer + data->start,
-				data->read_ret - data->start
-				);
-		if (data->nl_pos != -1)
-			data->nl_pos += data->start;
-	}
-}
-
-static char	*read_to_buffer(struct s_static_data *data, int fd, char **line)
-{
-	while (data->nl_pos == -1)
-	{
-		//DEBUG
-		//static ssize_t i = -1;
-		//i++;
-		//if (i == 1 || i == 2)
-		//	data->read_ret = -1;
-		//else
-		//ENDDEBUG
-		data->read_ret = read(fd, data->buffer, BUFFER_SIZE);
-		if (data->read_ret <= 0)
+		read_ret = read(fd, buffer, BUFFER_SIZE);
+		if (read_ret <= 0)
 		{
-			if (data->read_ret == -1)
+			shift_buffer(buffer, BUFFER_SIZE);
+			if (read_ret == -1)
 			{
-				free(*line);
-				*line = NULL;
+				free(line);
+				line = NULL;
 			}
-			data->read_ret = BUFFER_SIZE;
-			data->nl_pos = -1;
-			data->start = 0;
-			data->ret_len = 0;
-			return (*line);
+			return (line);
 		}
-		update_data_positions(data);
-		*line = ft_cat(*line, data);
-		if (data->malloc_error != -1 || line_is_filled(data))
-			return (*line);
+		line = ft_cat(line, buffer);
+		if (line_is_filled(line) || read_ret < BUFFER_SIZE)
+			return (line);
 	}
 	return (NULL);
 }
 
 char	*get_next_line(int fd)
 {
-	static struct s_static_data	data = {
-		.nl_pos = -1, .read_ret = BUFFER_SIZE, .malloc_error = -1
-	};
-	char						*line;
+	static char	buffer[BUFFER_SIZE + 1];
+	char	*line;
+	ssize_t	read_ret;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
 	line = NULL;
-	if (data.nl_pos <= data.read_ret && data.nl_pos >= 0)
+	read_ret = 0;
+	if (buffer[0])
 	{
-		update_data_positions(&data);
-		line = ft_cat(line, &data);
-		if (line_is_filled(&data))
+		line = ft_cat(line, buffer);
+		if (line_is_filled(line))
 			return (line);
 	}
-	if (data.read_ret == BUFFER_SIZE && data.nl_pos == -1)
-		return (read_to_buffer(&data, fd, &line));
+	if (!buffer[0])
+	{
+		return (fill_buffer(buffer, fd, line, read_ret));
+	}
 	return (line);
 }
+//
+//#include <stdio.h>
+//#include <fcntl.h>
+//int	main(void)
+//{
+//	int	fd = open("41_no_nl.txt", O_RDONLY);
+//	ssize_t	i = 0;
+//	char	*line = NULL;
+//
+//	while (i < 5)
+//	{
+//		line = get_next_line(fd);
+//		printf("<|%s|>", line);
+//		free(line);
+//		i++;
+//	}
+//	return (0);
+//}

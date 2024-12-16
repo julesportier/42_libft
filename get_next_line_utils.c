@@ -5,73 +5,56 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 10:41:10 by juportie          #+#    #+#             */
-/*   Updated: 2024/12/12 17:47:34 by juportie         ###   ########.fr       */
+/*   Created: 2024/12/16 16:32:51 by juportie          #+#    #+#             */
+/*   Updated: 2024/12/16 18:39:26 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void	update_ret_len(char *s, struct s_static_data *data, ssize_t *len)
+static ssize_t	ft_len(char *str)
 {
-	if (data->malloc_error == -1)
-	{
-		*len = data->ret_len;
-		if (s == NULL)
-		{
-			if (data->nl_pos == -1)
-				data->ret_len = data->read_ret - data->start;
-			else
-				data->ret_len = data->nl_pos - data->start;
-		}
-		else
-		{
-			if (data->nl_pos == -1)
-				data->ret_len += data->read_ret - data->start;
-			else
-				data->ret_len += data->nl_pos - data->start;
-		}
-	}
-	else
-	{
-		*len = data->malloc_error;
-		data->malloc_error = -1;
-	}
-}
-
-static char	*malloc_cat(struct s_static_data *data, ssize_t line_len)
-{
-	char	*cat;
-
-	if (data->read_ret > 0)
-	{
-		//DEBUG
-		//static ssize_t i;
-		//if(i++ == 0)
-		//	cat = NULL;
-		//else
-		//END DEBUG
-		cat = malloc(sizeof(char) * (data->ret_len + 1));
-		if (cat == NULL)
-			data->malloc_error = line_len;
-	}
-	else
-	{
-		cat = NULL;
-		data->read_ret = BUFFER_SIZE;
-		data->nl_pos = -1;
-	}
-	return (cat);
-}
-
-char	*ft_cat(char *line, struct s_static_data *data)
-{
-	ssize_t	line_len;
-	char	*cat;
 	ssize_t	i;
 
-	update_ret_len(line, data, &line_len);
-	cat = malloc_cat(data, line_len);
+	i = 0;
+	
+	if (str)
+	{
+		while (str[i] && str[i] != '\n')
+			i++;
+		if (str[i] == '\n')
+			i++;
+	}
+	return (i);
+}
+
+void	shift_buffer(char *buffer, ssize_t buffer_len)
+{
+	ssize_t	i;
+
+	i = 0;
+	while (buffer[i + buffer_len])
+	{
+		buffer[i] = buffer[i + buffer_len];
+		i++;
+	}
+	while (i < BUFFER_SIZE)
+	{
+		buffer[i] = '\0';
+		i++;
+	}
+}
+
+char	*ft_cat(char *line, char *buffer)
+{
+	ssize_t	line_len;
+	ssize_t	buffer_len;
+	ssize_t	i;
+	char	*cat;
+
+	line_len = ft_len(line);
+	buffer_len = ft_len(buffer);
+	cat = malloc(sizeof(char) * (line_len + buffer_len + 1));
 	if (cat == NULL)
 	{
 		free(line);
@@ -81,28 +64,29 @@ char	*ft_cat(char *line, struct s_static_data *data)
 	while (++i < line_len)
 		cat[i] = line[i];
 	free(line);
-	while (i < data->ret_len)
+	while (i < line_len + buffer_len)
 	{
-		cat[i] = (data->buffer)[i - line_len + data->start];
+		cat[i] = buffer[i - line_len];
 		i++;
 	}
 	cat[i] = '\0';
+	shift_buffer(buffer, buffer_len);
 	return (cat);
 }
 
-// The argument max_len is here to secure the reading,
-// because neither the buffer or the file are true strings.
-// The file can contain '\0' too (but why doing that ?).
-ssize_t	get_line_len(char *buffer, ssize_t max_len)
+ssize_t	line_is_filled(char *line)
 {
 	ssize_t	i;
 
 	i = 0;
-	while (i < max_len)
+	if (line)
 	{
-		i++;
-		if (buffer[i - 1] == '\n')
-			return (i);
+		while (line[i])
+		{
+			if (line[i] == '\n')
+				return(1);
+			i++;
+		}
 	}
-	return (-1);
+	return (0);
 }
