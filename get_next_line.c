@@ -31,7 +31,7 @@ static char	*fill_buffer(char *buffer, int fd, char *line, ssize_t read_ret)
 			return (line);
 		}
 		line = ft_cat(line, buffer);
-		if (line_is_filled(line) || read_ret < BUFFER_SIZE)
+		if (line_is_filled(line) || read_ret < BUFFER_SIZE || line == NULL)
 			return (line);
 	}
 	return (NULL);
@@ -43,12 +43,14 @@ char	*get_next_line(int fd)
 	char		*line;
 	ssize_t		read_ret;
 
+	if (BUFFER_SIZE < 1 || fd < 0)
+		return (NULL);
 	line = NULL;
 	read_ret = 0;
 	if (buffer[0])
 	{
 		line = ft_cat(line, buffer);
-		if (line_is_filled(line))
+		if (line_is_filled(line) || line == NULL)
 			return (line);
 	}
 	if (!buffer[0])
@@ -57,6 +59,24 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
+//
+//#include <stdio.h>
+//#include <fcntl.h>
+//int	main(void)
+//{
+//	int	fd = open("giant_line_nl.txt", O_RDONLY);
+//	ssize_t	i = 0;
+//	char	*line = NULL;
+//
+//	while (i < 3)
+//	{
+//		line = get_next_line(fd);
+//		printf("<|%s|>", line);
+//		free(line);
+//		i++;
+//	}
+//	return (0);
+//}
 //
 //#include <stdio.h>
 //#include <fcntl.h>
