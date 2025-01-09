@@ -15,21 +15,16 @@
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*node;
-	t_list	*next_node;
 
-	if (*lst == NULL)
+	if (lst == NULL)
 		return ;
-	node = *lst;
-	while (node->next)
+	while (*lst)
 	{
-		next_node = node->next;
+		node = *lst;
 		del(node->content);
+		*lst = node->next;
 		free(node);
-		node = next_node;
 	}
-	del(node->content);
-	free(node);
-	*lst = NULL;
 }
 //
 //#include <stdio.h>
