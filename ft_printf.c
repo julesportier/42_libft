@@ -78,33 +78,41 @@ static int	parse_type(const char format, va_list ap)
 	return (i);
 }
 
+static int	close_va_object(va_list ap, int return_value)
+{
+	va_end(ap);
+	return (return_value);
+}
+
+// error codes:
+// -1 (unrecognised formater), -2 (too many formaters), -3 (no argument)
 int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
 	int		f_count;
 	int		i;
-	int		w_count;
+	int		writes_count;
 
+	if (!str)
+		return (-3);
 	va_start(ap, str);
 	f_count = count_formats(str);
 	if (f_count < 0)
-		return (f_count);
+		return (close_va_object(ap, f_count));
 	i = 0;
-	w_count = 0;
+	writes_count = 0;
 	while (f_count-- + 1)
 	{
 		while (str[i] != '%')
 		{
 			if (str[i] == '\0')
-				return (w_count);
-			w_count += write(1, &str[i], 1);
-			i++;
+				return (close_va_object(ap, writes_count));
+			writes_count += write(1, &str[i++], 1);
 		}
-		w_count += parse_type(str[++i], ap);
+		writes_count += parse_type(str[++i], ap);
 		i++;
 	}
-	va_end(ap);
-	return (w_count);
+	return (close_va_object(ap, writes_count));
 }
 //
 //#include <stdio.h>
@@ -117,7 +125,7 @@ int	ft_printf(const char *str, ...)
 //	//	printf("Give an arg !\n");
 //	//	return (0);
 //	//}
-//	char *str = "[s format0]";
+//	//char *str = "[s format0]";
 //	//char *str2 = "[s format1]";
 //	//char	c = 'c';
 //	//char	*p = str;
