@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra
 NAME = libft.a
 
 HEADER = libft.h \
-		 ft_printf.h
+		 ftpf_printf.h
 
 SRC =	ft_isalpha.c \
 	ft_isdigit.c \
@@ -61,8 +61,8 @@ SRC =	ft_isalpha.c \
 	ft_lstclear_bonus.c \
 	ft_lstiter_bonus.c \
 	ft_lstmap_bonus.c \
-	ft_putnumbers_fd.c \
-	ft_puttext_fd.c \
+	ftpf_putnumbers_fd.c \
+	ftpf_puttext_fd.c \
 	ft_printf.c
 	
 OBJ = $(SRC:%.c=%.o)

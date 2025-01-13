@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puttext_fd.c                                    :+:      :+:    :+:   */
+/*   ftpf_puttext_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ftpf_printf.h"
 
-int	ft_strlen(char *str)
+int	ftpf_strlen(char *str)
 {
 	int	i;
 
@@ -26,18 +26,18 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	ft_putchar_fd(char c, int fd)
+int	ftpf_putchar_fd(char c, int fd)
 {
 	return ((int)write(fd, &c, 1));
 }
 
-int	ft_putstr_fd(char *s, int fd)
+int	ftpf_putstr_fd(char *s, int fd)
 {
 	int	s_len;
 
 	if (s == NULL)
-		return (ft_putstr_fd("(null)", fd));
-	s_len = ft_strlen(s);
+		return (ftpf_putstr_fd("(null)", fd));
+	s_len = ftpf_strlen(s);
 	if (s_len < 0)
 		return (-1);
 	return ((int)write(fd, s, s_len));

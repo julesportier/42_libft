@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnumbers_fd.c                                 :+:      :+:    :+:   */
+/*   ftpf_putnumbers_fd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,69 +10,69 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ftpf_printf.h"
 
-void	ft_putnbr_fd(int n, int fd, int *count)
+void	ftpf_putnbr_fd(int n, int fd, int *count)
 {
 	if (n > 9)
 	{
-		ft_putnbr_fd(n / 10, fd, count);
-		*count += ft_putchar_fd((n % 10) + 48, fd);
+		ftpf_putnbr_fd(n / 10, fd, count);
+		*count += ftpf_putchar_fd((n % 10) + 48, fd);
 	}
 	else if (n < 0)
 	{
 		if (n == -2147483648)
 		{
-			*count += ft_putstr_fd("-2147483648", fd);
+			*count += ftpf_putstr_fd("-2147483648", fd);
 			return ;
 		}
-		*count += ft_putchar_fd('-', fd);
+		*count += ftpf_putchar_fd('-', fd);
 		n *= -1;
-		ft_putnbr_fd(n, fd, count);
+		ftpf_putnbr_fd(n, fd, count);
 	}
 	else
-		*count += ft_putchar_fd(n + 48, fd);
+		*count += ftpf_putchar_fd(n + 48, fd);
 }
 
-void	ft_putulbase_fd(unsigned long nbr, char *base, int fd, int *count)
+void	ftpf_putulbase_fd(unsigned long nbr, char *base, int fd, int *count)
 {
 	unsigned long	base_len;
 
-	base_len = ft_strlen(base);
+	base_len = ftpf_strlen(base);
 	if (base_len < 1)
 		return ;
 	if (nbr > base_len - 1)
 	{
-		ft_putulbase_fd(nbr / base_len, base, fd, count);
-		*count += ft_putchar_fd(base[(nbr % base_len)], fd);
+		ftpf_putulbase_fd(nbr / base_len, base, fd, count);
+		*count += ftpf_putchar_fd(base[(nbr % base_len)], fd);
 	}
 	else
-		*count += ft_putchar_fd(base[nbr], fd);
+		*count += ftpf_putchar_fd(base[nbr], fd);
 }
 
-void	ft_putuibase_fd(unsigned int nbr, char *base, int fd, int *count)
+void	ftpf_putuibase_fd(unsigned int nbr, char *base, int fd, int *count)
 {
 	unsigned int	base_len;
 
-	base_len = ft_strlen(base);
+	base_len = ftpf_strlen(base);
 	if (base_len < 1)
 		return ;
 	if (nbr > base_len - 1)
 	{
-		ft_putulbase_fd(nbr / base_len, base, fd, count);
-		*count += ft_putchar_fd(base[(nbr % base_len)], fd);
+		ftpf_putulbase_fd(nbr / base_len, base, fd, count);
+		*count += ftpf_putchar_fd(base[(nbr % base_len)], fd);
 	}
 	else
-		*count += ft_putchar_fd(base[nbr], fd);
+		*count += ftpf_putchar_fd(base[nbr], fd);
 }
 
-void	ft_putaddress_fd(unsigned long address, int fd, int *count)
+void	ftpf_putaddress_fd(unsigned long address, int fd, int *count)
 {
 	if (address)
 	{
-		*count += ft_putstr_fd("0x", fd);
-		ft_putulbase_fd(address, "0123456789abcdef", fd, count);
+		*count += ftpf_putstr_fd("0x", fd);
+		ftpf_putulbase_fd(address, "0123456789abcdef", fd, count);
 	}
 	else
-		*count += ft_putstr_fd("(nil)", fd);
+		*count += ftpf_putstr_fd("(nil)", fd);
 }

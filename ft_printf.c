@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ftpf_printf.h"
 
 static int	check_formaters(char c)
 {
@@ -60,21 +60,21 @@ static int	parse_type(const char format, va_list ap)
 
 	i = 0;
 	if (format == 'c')
-		i = ft_putchar_fd(va_arg(ap, int), 1);
+		i = ftpf_putchar_fd(va_arg(ap, int), 1);
 	else if (format == 's')
-		i = ft_putstr_fd(va_arg(ap, char *), 1);
+		i = ftpf_putstr_fd(va_arg(ap, char *), 1);
 	else if (format == 'p')
-		ft_putaddress_fd(va_arg(ap, unsigned long), 1, &i);
+		ftpf_putaddress_fd(va_arg(ap, unsigned long), 1, &i);
 	else if (format == 'd' || format == 'i')
-		ft_putnbr_fd(va_arg(ap, int), 1, &i);
+		ftpf_putnbr_fd(va_arg(ap, int), 1, &i);
 	else if (format == 'u')
-		ft_putuibase_fd(va_arg(ap, int), "0123456789", 1, &i);
+		ftpf_putuibase_fd(va_arg(ap, int), "0123456789", 1, &i);
 	else if (format == 'x')
-		ft_putuibase_fd(va_arg(ap, int), "0123456789abcdef", 1, &i);
+		ftpf_putuibase_fd(va_arg(ap, int), "0123456789abcdef", 1, &i);
 	else if (format == 'X')
-		ft_putuibase_fd(va_arg(ap, int), "0123456789ABCDEF", 1, &i);
+		ftpf_putuibase_fd(va_arg(ap, int), "0123456789ABCDEF", 1, &i);
 	else if (format == '%')
-		i += ft_putchar_fd('%', 1);
+		i += ftpf_putchar_fd('%', 1);
 	return (i);
 }
 
