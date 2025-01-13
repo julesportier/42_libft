@@ -15,7 +15,8 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = libft.a
 
-HEADER = libft.h
+HEADER = libft.h \
+		 ft_printf.h
 
 SRC =	ft_isalpha.c \
 	ft_isdigit.c \
@@ -50,41 +51,36 @@ SRC =	ft_isalpha.c \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
-	ft_putnbr_fd.c
-
-SRC_BONUS =	ft_lstnew_bonus.c \
-		ft_lstadd_front_bonus.c \
-		ft_lstsize_bonus.c \
-		ft_lstlast_bonus.c \
-		ft_lstadd_back_bonus.c \
-		ft_lstdelone_bonus.c \
-		ft_lstclear_bonus.c \
-		ft_lstiter_bonus.c \
-		ft_lstmap_bonus.c \
-
+	ft_putnbr_fd.c \
+	ft_lstnew_bonus.c \
+	ft_lstadd_front_bonus.c \
+	ft_lstsize_bonus.c \
+	ft_lstlast_bonus.c \
+	ft_lstadd_back_bonus.c \
+	ft_lstdelone_bonus.c \
+	ft_lstclear_bonus.c \
+	ft_lstiter_bonus.c \
+	ft_lstmap_bonus.c \
+	ft_putnumbers_fd.c \
+	ft_puttext_fd.c \
+	ft_printf.c
+	
 OBJ = $(SRC:%.c=%.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	ar rs $(NAME) $?
 
 %.o: %.c $(HEADER) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
-all: $(NAME)
-$(NAME): $(OBJ)
-	ar rs $(NAME) $?
-
 clean:
-	rm -f $(OBJ) $(OBJ_BONUS) bonus
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-OBJ_BONUS = $(SRC_BONUS:%.c=%.o)
-bonus: $(OBJ_BONUS) $(OBJ)
-	ar rs $(NAME) $? ; \
-	touch bonus ; \
-	day=$$(date +"%F") ; \
-	time=$$(date +"%T") ; \
-	echo "Last bonus build : $$day $$time" > bonus
 
 .PHONY: all clean fclean re
