@@ -1,4 +1,11 @@
+# compilation output
 *.o
+*.d
 *.out
 *.gch
 *.a
+# project specific
+build/
+# bear output
+compile_commands.json
+.cache/
