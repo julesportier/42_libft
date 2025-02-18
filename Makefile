@@ -72,18 +72,18 @@ SRC :=	ft_isalpha.c \
 	get_next_line_utils.c \
 	get_next_line.c
 
-OBJ_DIR = build
-OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+OBJ_DIR := build
+OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 
-$(OBJ_DIR)/%.o: %.c $(HEADER) Makefile
-	mkdir -p build
-	$(CC) $(CFLAGS) -c $< -o $@
-
-all: $(NAME)
-
+all: $(OBJ_DIR) $(NAME)
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 $(NAME): $(OBJ)
 	ar rs $(NAME) $?
+
+$(OBJ_DIR)/%.o: %.c $(HEADER) Makefile
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	-rm $(OBJ)
