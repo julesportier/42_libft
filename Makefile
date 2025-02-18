@@ -86,11 +86,11 @@ $(NAME): $(OBJ)
 	ar rs $(NAME) $?
 
 clean:
-	rm -f $(OBJ)
-	rm -r $(OBJ_DIR)
+	-rm $(OBJ)
+	-rm -r $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	-rm $(NAME)
 
 re: fclean all
 
