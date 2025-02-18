@@ -15,10 +15,14 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = libft.a
 
+SRC_DIR = src
+
+vpath %.h $(SRC_DIR)
 HEADER = libft.h \
 	ftpf_printf.h \
 	get_next_line.h
 
+vpath %.c $(SRC_DIR)
 SRC =	ft_isalpha.c \
 	ft_isdigit.c \
 	ft_isalnum.c \
@@ -67,19 +71,23 @@ SRC =	ft_isalpha.c \
 	ft_printf.c \
 	get_next_line_utils.c \
 	get_next_line.c
-	
-OBJ = $(SRC:%.c=%.o)
+
+OBJ_DIR = build
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+
+
+$(OBJ_DIR)/%.o: %.c $(HEADER) Makefile
+	mkdir -p build
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rs $(NAME) $?
 
-%.o: %.c $(HEADER) Makefile
-	$(CC) $(CFLAGS) -c $< -o $@
-
 clean:
 	rm -f $(OBJ)
+	rm -r $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
