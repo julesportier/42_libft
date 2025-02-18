@@ -10,20 +10,20 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CC := cc
+CFLAGS := -Wall -Werror -Wextra
 
-NAME = libft.a
+NAME := libft.a
 
-SRC_DIR = src
+SRC_DIR := src
 
 vpath %.h $(SRC_DIR)
-HEADER = libft.h \
+HEADER := libft.h \
 	ftpf_printf.h \
 	get_next_line.h
 
 vpath %.c $(SRC_DIR)
-SRC =	ft_isalpha.c \
+SRC :=	ft_isalpha.c \
 	ft_isdigit.c \
 	ft_isalnum.c \
 	ft_isascii.c \
