@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:08:24 by juportie          #+#    #+#             */
-/*   Updated: 2024/11/15 16:57:26 by juportie         ###   ########.fr       */
+/*   Updated: 2025/02/20 10:51:30 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+//ADDED FUNCTIONS
+unsigned int	ft_atoui_base(const char *nptr, char *base);
 
 #endif
