@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:08:24 by juportie          #+#    #+#             */
-/*   Updated: 2025/02/20 15:22:19 by juportie         ###   ########.fr       */
+/*   Updated: 2025/02/21 13:07:32 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 
-//BONUS
+//LISTS
 typedef struct s_list
 {
 	void			*content;
@@ -69,7 +69,19 @@ t_list			*ft_lstmap(
 					t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 //ADDED FUNCTIONS
+//	CONVERSIONS
 unsigned int	ft_atoui_base(const char *nptr, char *base);
 unsigned int	ft_uhextoui(const char *nptr);
+//	DOUBLY LINKED LISTS
+typedef struct	s_dlisti
+{
+	int	content;
+	struct s_dlisti	*next;
+	struct s_dlisti	*prev;
+}	t_dlisti;
+
+t_dlisti	*ft_dlsti_new(int i);
+void	ft_cdlsti_add_back(t_dlisti **lst, t_dlisti *new_node);
+void	ft_print_dlsti(t_dlisti *lst);
 
 #endif
