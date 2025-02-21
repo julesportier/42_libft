@@ -91,11 +91,10 @@ $(OBJ_DIR)/%.o: %.c $(HEADER) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	-rm $(OBJ)
-	-rm -r $(OBJ_DIR)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	-rm $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
