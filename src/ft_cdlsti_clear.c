@@ -17,7 +17,7 @@ void	ft_cdlsti_clear(t_dlisti **lst)
 	t_dlisti	*node;
 	t_dlisti	*tail;
 
-	if (lst == NULL)
+	if (lst == NULL || *lst == NULL)
 		return ;
 	tail = (*lst)->prev;
 	while (*lst)
