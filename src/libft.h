@@ -73,15 +73,15 @@ t_list			*ft_lstmap(
 unsigned int	ft_atoui_base(const char *nptr, char *base);
 unsigned int	ft_uhextoui(const char *nptr);
 //	DOUBLY LINKED LISTS
-typedef struct	s_dlisti
+typedef struct s_dlisti
 {
-	int	content;
+	int				content;
 	struct s_dlisti	*next;
 	struct s_dlisti	*prev;
 }	t_dlisti;
 
-t_dlisti	*ft_dlsti_new(int i);
-void	ft_cdlsti_add_back(t_dlisti **lst, t_dlisti *new_node);
-void	ft_print_dlsti(t_dlisti *lst);
+t_dlisti		*ft_dlsti_new(int i);
+void			ft_cdlsti_add_back(t_dlisti **lst, t_dlisti *new_node);
+void			ft_print_dlsti(t_dlisti *lst);
 
 #endif

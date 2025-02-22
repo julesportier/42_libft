@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 13:04:58 by juportie          #+#    #+#             */
-/*   Updated: 2025/02/21 13:07:52 by juportie         ###   ########.fr       */
+/*   Updated: 2025/02/22 09:33:17 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_print_dlsti(t_dlisti *lst)
 	while (lst)
 	{
 		ft_printf("node %X; next %X; prev %X; content %d\n",
-	    		lst, lst->next, lst->prev, lst->content);
+			lst, lst->next, lst->prev, lst->content);
 		if (lst->next == head)
 			return ;
 		lst = lst->next;
