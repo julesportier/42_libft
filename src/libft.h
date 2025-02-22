@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:08:24 by juportie          #+#    #+#             */
-/*   Updated: 2025/02/22 10:08:04 by juportie         ###   ########.fr       */
+/*   Updated: 2025/02/22 11:55:25 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,12 @@ t_list			*ft_lstmap(
 int				ft_isdigitstr(char *str);
 int				ft_issdigitstr(char *str);
 //	CONVERSIONS
+typedef struct s_iflag
+{
+	int				i;
+	int				flag;
+}	t_iflag;
+t_iflag			ft_atoi_flag(const char *nptr);
 unsigned int	ft_atoui_base(const char *nptr, char *base);
 unsigned int	ft_uhextoui(const char *nptr);
 //	DOUBLY LINKED LISTS
