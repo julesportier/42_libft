@@ -12,8 +12,11 @@
 
 #include "get_next_line.h"
 
-static char	*fill_buffer(char *buffer, int fd, char *line, ssize_t read_ret)
+static char	*fill_buffer(char *buffer, int fd, char *line)
 {
+	ssize_t		read_ret;
+
+	read_ret = 0;
 	while (!buffer[0])
 	{
 		read_ret = read(fd, buffer, BUFFER_SIZE);
@@ -41,12 +44,10 @@ char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;
-	ssize_t		read_ret;
 
 	if (BUFFER_SIZE < 1 || fd < 0)
 		return (NULL);
 	line = NULL;
-	read_ret = 0;
 	if (buffer[0])
 	{
 		line = ft_cat(line, buffer);
@@ -55,7 +56,7 @@ char	*get_next_line(int fd)
 	}
 	if (!buffer[0])
 	{
-		return (fill_buffer(buffer, fd, line, read_ret));
+		return (fill_buffer(buffer, fd, line));
 	}
 	return (line);
 }
