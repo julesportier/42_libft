@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:08:24 by juportie          #+#    #+#             */
-/*   Updated: 2025/02/22 12:58:53 by juportie         ###   ########.fr       */
+/*   Updated: 2025/02/25 09:41:56 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_iflag
 	int				i;
 	int				flag;
 }	t_iflag;
+int				ft_atoi_sat(const char *nptr);
 t_iflag			ft_atoi_flag(const char *nptr);
 unsigned int	ft_atoui_base(const char *nptr, char *base);
 unsigned int	ft_uhextoui(const char *nptr);

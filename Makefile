@@ -6,7 +6,7 @@
 #    By: juportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:03:35 by juportie          #+#    #+#              #
-#    Updated: 2025/02/22 12:57:41 by juportie         ###   ########.fr        #
+#    Updated: 2025/02/25 09:40:46 by juportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,8 @@ SRC :=	ft_isalpha.c \
 	ft_print_dlsti.c \
 	ft_isdigitstr.c \
 	ft_issdigitstr.c \
-	ft_atoi_flag.c
+	ft_atoi_flag.c \
+	ft_atoi_sat.c
 
 OBJ_DIR := build
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
