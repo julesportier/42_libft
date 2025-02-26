@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:08:24 by juportie          #+#    #+#             */
-/*   Updated: 2025/02/25 09:41:56 by juportie         ###   ########.fr       */
+/*   Updated: 2025/02/26 10:11:16 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ t_dlisti		*ft_dlsti_new(int i);
 void			ft_cdlsti_add_back(t_dlisti **lst, t_dlisti *new_node);
 void			ft_cdlsti_clear(t_dlisti **lst);
 void			ft_print_dlsti(t_dlisti *lst);
+int				ft_cdlsti_size(t_dlisti *lst);
 
 #endif
