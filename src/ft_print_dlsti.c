@@ -6,16 +6,16 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 13:04:58 by juportie          #+#    #+#             */
-/*   Updated: 2025/02/22 09:33:17 by juportie         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:39:28 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ftpf_printf.h"
 #include "libft.h"
 
-void	ft_print_dlsti(t_dlisti *lst)
+void	ft_print_dlsti(t_dlsti *lst)
 {
-	t_dlisti	*head;
+	t_dlsti	*head;
 
 	head = lst;
 	while (lst)
