@@ -6,17 +6,17 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 13:04:25 by juportie          #+#    #+#             */
-/*   Updated: 2025/02/21 13:04:51 by juportie         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:38:40 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_dlisti	*ft_dlsti_new(int i)
+t_dlsti	*ft_dlsti_new(int i)
 {
-	t_dlisti	*lst;
+	t_dlsti	*lst;
 
-	lst = malloc(sizeof(t_dlisti));
+	lst = malloc(sizeof(t_dlsti));
 	if (lst != NULL)
 	{
 		lst->content = i;

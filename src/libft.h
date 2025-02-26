@@ -82,16 +82,16 @@ t_iflag			ft_atoi_flag(const char *nptr);
 unsigned int	ft_atoui_base(const char *nptr, char *base);
 unsigned int	ft_uhextoui(const char *nptr);
 //	DOUBLY LINKED LISTS
-typedef struct s_dlisti
+typedef struct s_dlsti
 {
 	int				content;
-	struct s_dlisti	*next;
-	struct s_dlisti	*prev;
-}	t_dlisti;
+	struct s_dlsti	*next;
+	struct s_dlsti	*prev;
+}	t_dlsti;
 
-t_dlisti		*ft_dlsti_new(int i);
-void			ft_cdlsti_add_back(t_dlisti **lst, t_dlisti *new_node);
-void			ft_cdlsti_clear(t_dlisti **lst);
-void			ft_print_dlsti(t_dlisti *lst);
+t_dlsti			*ft_dlsti_new(int i);
+void			ft_cdlsti_add_back(t_dlsti **lst, t_dlsti *new_node);
+void			ft_cdlsti_clear(t_dlsti **lst);
+void			ft_print_dlsti(t_dlsti *lst);
 
 #endif
