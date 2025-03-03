@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-int	ft_cdlsti_size(t_dlisti *lst)
+int	ft_cdlsti_size(t_dlsti *lst)
 {
-	t_dlisti	*head;
+	t_dlsti	*head;
 	int	i;
 
 	head = lst;
