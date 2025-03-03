@@ -6,7 +6,7 @@
 #    By: juportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:03:35 by juportie          #+#    #+#              #
-#    Updated: 2025/02/26 10:13:26 by juportie         ###   ########.fr        #
+#    Updated: 2025/03/03 12:38:46 by juportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@ SRC :=	ft_isalpha.c \
 	ft_atoui_base.c \
 	ft_uhextoui.c \
 	ft_dlsti_add_back.c \
+	ft_cdlsti_add_front.c \
 	ft_dlsti_new.c \
 	ft_cdlsti_clear.c \
 	ft_print_dlsti.c \

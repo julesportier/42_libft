@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:08:24 by juportie          #+#    #+#             */
-/*   Updated: 2025/02/26 10:11:16 by juportie         ###   ########.fr       */
+/*   Updated: 2025/03/03 12:38:20 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct s_dlsti
 
 t_dlsti			*ft_dlsti_new(int i);
 void			ft_cdlsti_add_back(t_dlsti **lst, t_dlsti *new_node);
+void			ft_cdlsti_add_front(t_dlsti **lst, t_dlsti *new_node);
 void			ft_cdlsti_clear(t_dlsti **lst);
 void			ft_print_dlsti(t_dlsti *lst);
 int				ft_cdlsti_size(t_dlsti *lst);
