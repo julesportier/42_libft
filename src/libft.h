@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:08:24 by juportie          #+#    #+#             */
-/*   Updated: 2025/03/04 07:18:45 by juportie         ###   ########.fr       */
+/*   Updated: 2025/03/04 08:48:05 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,16 @@ t_iflag			ft_atoi_flag(const char *nptr);
 unsigned int	ft_atoui_base(const char *nptr, char *base);
 unsigned int	ft_uhextoui(const char *nptr);
 //	DOUBLY LINKED LISTS
-typedef struct s_dlst
+typedef struct s_dlstip
 {
-	void		*content;
-	struct s_dlst	*next;
-	struct s_dlst	*prev;
-}	t_dlst;
-t_dlst	*ft_dlst_new(void *content);
-void	ft_cdlst_add_back(t_dlst **lst, t_dlst *new_node);
-void	ft_cdlst_add_front(t_dlst **lst, t_dlst *new_node);
-void	ft_dlst_clear(t_dlst **lst);
+	int				*content;
+	struct s_dlstip	*next;
+	struct s_dlstip	*prev;
+}	t_dlstip;
+t_dlstip		*ft_dlstip_new(int *content);
+void			ft_cdlstip_add_back(t_dlstip **lst, t_dlstip *new_node);
+void			ft_cdlstip_add_front(t_dlstip **lst, t_dlstip *new_node);
+void			ft_dlstip_clear(t_dlstip **lst);
 
 typedef struct s_dlsti
 {

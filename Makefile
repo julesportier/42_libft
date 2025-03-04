@@ -76,10 +76,10 @@ SRC :=	ft_isalpha.c \
 	ft_atoi_flag.c \
 	ft_atoi_sat.c \
 	ft_uhextoui.c \
-	ft_dlst_new.c \
-	ft_cdlst_add_back.c \
-	ft_cdlst_add_front.c \
-	ft_dlst_clear.c \
+	ft_dlstip_new.c \
+	ft_cdlstip_add_back.c \
+	ft_cdlstip_add_front.c \
+	ft_dlstip_clear.c \
 	ft_dlsti_add_back.c \
 	ft_cdlsti_add_front.c \
 	ft_dlsti_new.c \

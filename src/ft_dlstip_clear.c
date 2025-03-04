@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cdlst_clear.c                                   :+:      :+:    :+:   */
+/*  ft_dlstip_clear.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-void	ft_dlst_clear(t_dlst **lst)
+void	ft_dlstip_clear(t_dlstip **lst)
 {
-	t_dlst	*node;
-	t_dlst	*tail;
+	t_dlstip	*node;
+	t_dlstip	*tail;
 
 	if (lst == NULL || *lst == NULL)
 		return ;

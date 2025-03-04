@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_new.c                                      :+:      :+:    :+:   */
+/*   ft_cdlstip_add_front.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 07:06:41 by juportie          #+#    #+#             */
-/*   Updated: 2025/03/04 07:07:36 by juportie         ###   ########.fr       */
+/*   Created: 2025/03/04 07:10:27 by juportie          #+#    #+#             */
+/*   Updated: 2025/03/04 08:46:20 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_dlst	*ft_dlst_new(void *content)
+void	ft_cdlstip_add_front(t_dlstip **lst, t_dlstip *new_node)
 {
-	t_dlst	*lst;
-
-	lst = malloc(sizeof(t_dlst));
-	if (lst != NULL)
+	if (new_node && lst)
 	{
-		lst->content = content;
-		lst->next = NULL;
-		lst->prev = NULL;
+		if (!*lst)
+		{
+			*lst = new_node;
+			new_node->prev = *lst;
+		}
+		new_node->next = *lst;
+		new_node->prev = (*lst)->prev;
+		(*lst)->prev->next = new_node;
+		(*lst)->prev = new_node;
+		*lst = new_node;
 	}
-	return (lst);
 }
