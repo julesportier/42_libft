@@ -73,7 +73,13 @@ SRC :=	ft_isalpha.c \
 	get_next_line_utils.c \
 	get_next_line.c \
 	ft_atoui_base.c \
+	ft_atoi_flag.c \
+	ft_atoi_sat.c \
 	ft_uhextoui.c \
+	ft_dlst_new.c \
+	ft_cdlst_add_back.c \
+	ft_cdlst_add_front.c \
+	ft_dlst_clear.c \
 	ft_dlsti_add_back.c \
 	ft_cdlsti_add_front.c \
 	ft_dlsti_new.c \
@@ -81,9 +87,7 @@ SRC :=	ft_isalpha.c \
 	ft_print_dlsti.c \
 	ft_cdlsti_size.c \
 	ft_isdigitstr.c \
-	ft_issdigitstr.c \
-	ft_atoi_flag.c \
-	ft_atoi_sat.c
+	ft_issdigitstr.c
 
 OBJ_DIR := build
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
