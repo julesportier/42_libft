@@ -6,12 +6,13 @@
 #    By: juportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:03:35 by juportie          #+#    #+#              #
-#    Updated: 2025/03/03 12:38:46 by juportie         ###   ########.fr        #
+#    Updated: 2025/03/04 08:03:39 by juportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC := cc
 CFLAGS := -Wall -Werror -Wextra
+CFLAGS_DB := -Wall -Werror -Wextra -g3
 
 NAME := libft.a
 
@@ -89,6 +90,8 @@ OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 
 all: $(OBJ_DIR) $(NAME)
+dbg: CFLAGS := $(CFLAGS_DB)
+dbg: all
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 $(NAME): $(OBJ)
@@ -105,4 +108,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all dbg clean fclean re
