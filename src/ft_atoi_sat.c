@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 
 static int	overflows(int nbr, int next_nbr, int sign)
 {
