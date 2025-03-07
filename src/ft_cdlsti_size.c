@@ -15,7 +15,7 @@
 int	ft_cdlsti_size(t_dlsti *lst)
 {
 	t_dlsti	*head;
-	int	i;
+	int		i;
 
 	head = lst;
 	i = 0;
