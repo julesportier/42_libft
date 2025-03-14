@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftpf_printf.h"
+#include "ft_printf.h"
 
 void	ftpf_putnbr_fd(int n, int fd, int *count)
 {

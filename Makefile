@@ -20,7 +20,7 @@ SRC_DIR := src
 
 vpath %.h $(SRC_DIR)
 HEADER := libft.h \
-	ftpf_printf.h \
+	ft_printf.h \
 	get_next_line.h
 
 vpath %.c $(SRC_DIR)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftpf_printf.h"
+#include "ft_printf.h"
 
 static int	check_formaters(char c)
 {
