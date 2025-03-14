@@ -88,6 +88,18 @@ t_iflag			ft_atoi_flag(const char *nptr);
 unsigned int	ft_atoui_base(const char *nptr, char *base);
 unsigned int	ft_uhextoui(const char *nptr);
 //	DOUBLY LINKED LISTS
+typedef struct s_dlst
+{
+	int				*content;
+	struct s_dlst	*next;
+	struct s_dlst	*prev;
+}	t_dlst;
+t_dlst			*ft_dlstnew(void *);
+void			ft_cdlstadd_back(t_dlst **lst, t_dlst *new_node);
+void			ft_cdlstadd_front(t_dlst **lst, t_dlst *new_node);
+void			ft_cdlstclear(t_dlst **lst);
+int			ft_cdlstsize(t_dlst *lst);
+
 typedef struct s_dlstip
 {
 	int				*content;
