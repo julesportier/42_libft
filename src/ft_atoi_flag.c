@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_struct.c                                   :+:      :+:    :+:   */
+/*   ft_atoi_flag.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 09:00:48 by juportie          #+#    #+#             */
-/*   Updated: 2025/02/22 11:55:25 by juportie         ###   ########.fr       */
+/*   Updated: 2025/03/14 12:06:19 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	overflows(int nbr, int next_nbr, int sign)
+static int	overflows(int nbr, int next_nbr)
 {
 	if (
-		nbr * sign > 0
-		&& (nbr * 10 + next_nbr) * sign <= 0
+		ft_ismuloverflow(nbr, 10)
+		|| nbr * 10 + next_nbr <= 0
 	)
 		return (1);
 	return (0);
 }
 
-static int	underflows(int nbr, int next_nbr, int sign)
+static int	underflows(int nbr, int next_nbr)
 {
 	if (
-		nbr * sign < 0
-		&& (nbr * 10 + next_nbr) * sign >= 0
+		ft_ismuloverflow(nbr, 10)
+		|| nbr * 10 + next_nbr >= 0
 	)
 		return (1);
 	return (0);
@@ -54,9 +54,9 @@ t_iflag	ft_atoi_flag(const char *nptr)
 	{
 		if (!ft_isdigit(nptr[i]))
 			return (*set_flag(&out, 4));
-		if (overflows(out.i, nptr[i] - 48, sign))
+		if (sign == 1 && overflows(out.i, nptr[i] - 48))
 			return (*set_flag(&out, 1));
-		if (underflows(out.i, nptr[i] - 48, sign))
+		if (sign == -1 && underflows(out.i, nptr[i] - 48))
 			return (*set_flag(&out, 2));
 		out.i = out.i * 10 + (nptr[i] - 48);
 		i++;

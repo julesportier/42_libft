@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:08:24 by juportie          #+#    #+#             */
-/*   Updated: 2025/03/04 08:48:05 by juportie         ###   ########.fr       */
+/*   Updated: 2025/03/14 12:02:04 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ t_list			*ft_lstmap(
 //	CHECKS
 int				ft_isdigitstr(char *str);
 int				ft_issdigitstr(char *str);
+int				ft_ismuloverflow(int a, int b);
 //	CONVERSIONS
 typedef struct s_iflag
 {

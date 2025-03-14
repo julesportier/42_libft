@@ -6,7 +6,7 @@
 #    By: juportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:03:35 by juportie          #+#    #+#              #
-#    Updated: 2025/03/04 08:03:39 by juportie         ###   ########.fr        #
+#    Updated: 2025/03/14 12:01:34 by juportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRC :=	ft_isalpha.c \
 	ft_printf.c \
 	get_next_line_utils.c \
 	get_next_line.c \
+	ft_ismuloverflow.c \
 	ft_atoui_base.c \
 	ft_atoi_flag.c \
 	ft_atoi_sat.c \
