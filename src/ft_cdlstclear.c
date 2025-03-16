@@ -15,15 +15,15 @@
 void	ft_cdlstclear(t_dlst **lst)
 {
 	t_dlst	*node;
-	t_dlst	*tail;
+	t_dlst	*last;
 
 	if (lst == NULL || *lst == NULL)
 		return ;
-	tail = (*lst)->prev;
+	last = (*lst)->prev;
 	while (*lst)
 	{
 		node = *lst;
-		if (*lst != tail)
+		if (*lst != last)
 			*lst = node->next;
 		else
 			*lst = NULL;

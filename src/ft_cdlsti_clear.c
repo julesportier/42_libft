@@ -15,15 +15,15 @@
 void	ft_cdlsti_clear(t_dlsti **lst)
 {
 	t_dlsti	*node;
-	t_dlsti	*tail;
+	t_dlsti	*last;
 
 	if (lst == NULL || *lst == NULL)
 		return ;
-	tail = (*lst)->prev;
+	last = (*lst)->prev;
 	while (*lst)
 	{
 		node = *lst;
-		if (*lst != tail)
+		if (*lst != last)
 			*lst = node->next;
 		else
 			*lst = NULL;

@@ -15,15 +15,15 @@
 void	ft_dlstip_clear(t_dlstip **lst)
 {
 	t_dlstip	*node;
-	t_dlstip	*tail;
+	t_dlstip	*last;
 
 	if (lst == NULL || *lst == NULL)
 		return ;
-	tail = (*lst)->prev;
+	last = (*lst)->prev;
 	while (*lst)
 	{
 		node = *lst;
-		if (*lst != tail)
+		if (*lst != last)
 			*lst = node->next;
 		else
 			*lst = NULL;
