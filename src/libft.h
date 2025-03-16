@@ -90,7 +90,7 @@ unsigned int	ft_uhextoui(const char *nptr);
 //	DOUBLY LINKED LISTS
 typedef struct s_dlst
 {
-	int				*content;
+	void				*content;
 	struct s_dlst	*next;
 	struct s_dlst	*prev;
 }	t_dlst;
