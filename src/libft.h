@@ -16,6 +16,10 @@
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 # define UINT_MAX 4294967295
+// Macros for error handling
+# define WRONG_INPUT 1
+# define OVERFLOW 2
+# define UNDERFLOW 4
 
 # include <stdlib.h>
 # include <unistd.h>

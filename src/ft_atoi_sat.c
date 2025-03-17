@@ -15,8 +15,9 @@
 static int	overflows(int nbr, int next_nbr)
 {
 	if (
-		ft_ismuloverflow(nbr, 10)
-		|| nbr * 10 + next_nbr <= 0
+		(nbr != 0 || next_nbr != 0)
+		&& (ft_ismuloverflow(nbr, 10)
+		|| nbr * 10 + next_nbr <= 0)
 	)
 		return (1);
 	return (0);
@@ -25,8 +26,9 @@ static int	overflows(int nbr, int next_nbr)
 static int	underflows(int nbr, int next_nbr)
 {
 	if (
-		ft_ismuloverflow(nbr, 10)
-		|| nbr * 10 + next_nbr >= 0
+		(nbr != 0 || next_nbr != 0)
+		&& (ft_ismuloverflow(nbr, 10)
+		|| nbr * -10 - next_nbr >= 0)
 	)
 		return (1);
 	return (0);

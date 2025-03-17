@@ -14,7 +14,7 @@ int	ft_ismuloverflow(int a, int b)
 {
 	int	result;
 
-	if (a != 0 && b != 0)
+	if (a != 0 || b != 0)
 	{
 		result = a * b;
 		if (a != result / b)
