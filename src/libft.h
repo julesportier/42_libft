@@ -104,29 +104,4 @@ void			ft_cdlstadd_front(t_dlst **lst, t_dlst *new_node);
 void			ft_cdlstclear(t_dlst **lst);
 int			ft_cdlstsize(t_dlst *lst);
 
-typedef struct s_dlstip
-{
-	int				*content;
-	struct s_dlstip	*next;
-	struct s_dlstip	*prev;
-}	t_dlstip;
-t_dlstip		*ft_dlstip_new(int *content);
-void			ft_cdlstip_add_back(t_dlstip **lst, t_dlstip *new_node);
-void			ft_cdlstip_add_front(t_dlstip **lst, t_dlstip *new_node);
-void			ft_dlstip_clear(t_dlstip **lst);
-
-typedef struct s_dlsti
-{
-	int				content;
-	struct s_dlsti	*next;
-	struct s_dlsti	*prev;
-}	t_dlsti;
-
-t_dlsti			*ft_dlsti_new(int i);
-void			ft_cdlsti_add_back(t_dlsti **lst, t_dlsti *new_node);
-void			ft_cdlsti_add_front(t_dlsti **lst, t_dlsti *new_node);
-void			ft_cdlsti_clear(t_dlsti **lst);
-void			ft_print_dlsti(t_dlsti *lst);
-int				ft_cdlsti_size(t_dlsti *lst);
-
 #endif

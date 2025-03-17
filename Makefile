@@ -82,16 +82,6 @@ SRC :=	ft_isalpha.c \
 	ft_cdlstadd_front.c \
 	ft_cdlstclear.c \
 	ft_cdlstsize.c \
-	ft_dlstip_new.c \
-	ft_cdlstip_add_back.c \
-	ft_cdlstip_add_front.c \
-	ft_dlstip_clear.c \
-	ft_dlsti_add_back.c \
-	ft_cdlsti_add_front.c \
-	ft_dlsti_new.c \
-	ft_cdlsti_clear.c \
-	ft_print_dlsti.c \
-	ft_cdlsti_size.c \
 	ft_isdigitstr.c \
 	ft_issdigitstr.c
 
