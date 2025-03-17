@@ -51,11 +51,13 @@ t_iflag	ft_atoi_flag(const char *nptr)
 	i = 0;
 	sign = 1;
 	out.i = 0;
+	out.flag = WRONG_INPUT;
 	if (nptr[i] == '+' || nptr[i] == '-')
 		if (nptr[i++] == '-')
 			sign = -1;
 	while (nptr[i])
 	{
+		out.flag = 0;
 		if (!ft_isdigit(nptr[i]))
 			return (*set_flag(&out, WRONG_INPUT));
 		if (sign == 1 && overflows(out.i, nptr[i] - 48))
@@ -66,5 +68,5 @@ t_iflag	ft_atoi_flag(const char *nptr)
 		i++;
 	}
 	out.i *= sign;
-	return (*set_flag(&out, 0));
+	return (out);
 }
