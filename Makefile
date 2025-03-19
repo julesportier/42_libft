@@ -6,7 +6,7 @@
 #    By: juportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:03:35 by juportie          #+#    #+#              #
-#    Updated: 2025/03/17 16:49:26 by juportie         ###   ########.fr        #
+#    Updated: 2025/03/19 11:04:01 by juportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ SRC :=	ft_isalpha.c \
 	ft_uhextoui.c \
 	ft_dlstnew.c \
 	ft_dlstlast.c \
+	ft_dlsthead.c \
 	ft_dlstadd_back.c \
 	ft_dlstadd_front.c \
 	ft_dlstsize.c \
