@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:08:24 by juportie          #+#    #+#             */
-/*   Updated: 2025/03/27 11:10:45 by juportie         ###   ########.fr       */
+/*   Updated: 2025/03/27 11:15:23 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,20 +97,20 @@ unsigned int	ft_uhextoui(const char *nptr);
 typedef struct s_dlst
 {
 	void				*content;
-	struct s_dlst	*next;
-	struct s_dlst	*prev;
+	struct s_dlst		*next;
+	struct s_dlst		*prev;
 }	t_dlst;
-t_dlst			*ft_dlstnew(void *);
+t_dlst			*ft_dlstnew(void *content);
 t_dlst			*ft_dlstlast(t_dlst *lst);
 t_dlst			*ft_dlsthead(t_dlst *lst);
 void			ft_dlstadd_back(t_dlst **lst, t_dlst *new_node);
 void			ft_dlstadd_front(t_dlst **lst, t_dlst *new_node);
-int			ft_dlstsize(t_dlst *lst);
+int				ft_dlstsize(t_dlst *lst);
 void			ft_dlstclear(t_dlst *lst);
 void			ft_dlstremove(t_dlst **node);
 void			ft_cdlstadd_back(t_dlst **lst, t_dlst *new_node);
 void			ft_cdlstadd_front(t_dlst **lst, t_dlst *new_node);
 void			ft_cdlstclear(t_dlst **lst);
-int			ft_cdlstsize(t_dlst *lst);
+int				ft_cdlstsize(t_dlst *lst);
 
 #endif

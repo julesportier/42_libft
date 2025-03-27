@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 09:16:29 by juportie          #+#    #+#             */
-/*   Updated: 2025/03/14 12:02:50 by juportie         ###   ########.fr       */
+/*   Updated: 2025/03/27 11:17:10 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	overflows(int nbr, int next_nbr)
 	if (
 		(nbr != 0 || next_nbr != 0)
 		&& (ft_ismuloverflow(nbr, 10)
-		|| nbr * 10 + next_nbr <= 0)
+			|| nbr * 10 + next_nbr <= 0)
 	)
 		return (1);
 	return (0);
@@ -28,7 +28,7 @@ static int	underflows(int nbr, int next_nbr)
 	if (
 		(nbr != 0 || next_nbr != 0)
 		&& (ft_ismuloverflow(nbr, 10)
-		|| nbr * -10 - next_nbr >= 0)
+			|| nbr * -10 - next_nbr >= 0)
 	)
 		return (1);
 	return (0);
