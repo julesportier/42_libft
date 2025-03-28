@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 09:00:48 by juportie          #+#    #+#             */
-/*   Updated: 2025/03/27 11:17:28 by juportie         ###   ########.fr       */
+/*   Updated: 2025/03/28 08:58:27 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	underflows(int nbr, int next_nbr)
 static t_iflag	*set_flag(t_iflag *out, int flag)
 {
 	if (flag == UNDERFLOW)
-		out->i = out->i * -1;
+		out->nbr = out->nbr * -1;
 	out->flag = flag;
 	return (out);
 }
@@ -50,7 +50,7 @@ t_iflag	ft_atoi_flag(const char *nptr)
 
 	i = 0;
 	sign = 1;
-	out.i = 0;
+	out.nbr = 0;
 	out.flag = WRONG_INPUT;
 	if (nptr[i] == '+' || nptr[i] == '-')
 		if (nptr[i++] == '-')
@@ -60,13 +60,13 @@ t_iflag	ft_atoi_flag(const char *nptr)
 		out.flag = 0;
 		if (!ft_isdigit(nptr[i]))
 			return (*set_flag(&out, WRONG_INPUT));
-		if (sign == 1 && overflows(out.i, nptr[i] - 48))
+		if (sign == 1 && overflows(out.nbr, nptr[i] - 48))
 			return (*set_flag(&out, OVERFLOW));
-		if (sign == -1 && underflows(out.i, nptr[i] - 48))
+		if (sign == -1 && underflows(out.nbr, nptr[i] - 48))
 			return (*set_flag(&out, UNDERFLOW));
-		out.i = out.i * 10 + (nptr[i] - 48);
+		out.nbr = out.nbr * 10 + (nptr[i] - 48);
 		i++;
 	}
-	out.i *= sign;
+	out.nbr *= sign;
 	return (out);
 }

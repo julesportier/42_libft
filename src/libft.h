@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:08:24 by juportie          #+#    #+#             */
-/*   Updated: 2025/03/28 08:40:28 by juportie         ###   ########.fr       */
+/*   Updated: 2025/03/28 08:58:37 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int				ft_sqrt_floor(int nbr);
 //	CONVERSIONS
 typedef struct s_iflag
 {
-	int				i;
+	int				nbr;
 	int				flag;
 }	t_iflag;
 int				ft_atoi_sat(const char *nptr);
