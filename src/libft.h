@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:08:24 by juportie          #+#    #+#             */
-/*   Updated: 2025/03/27 11:15:23 by juportie         ###   ########.fr       */
+/*   Updated: 2025/03/28 08:40:28 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ t_list			*ft_lstmap(
 //	CHECKS
 int				ft_isdigitstr(char *str);
 int				ft_issdigitstr(char *str);
+int				ft_isequalstr(char *str_a, char *str_b);
 int				ft_ismuloverflow(int a, int b);
 //	MATHS
 int				ft_sqrt_floor(int nbr);
