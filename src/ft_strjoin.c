@@ -32,10 +32,11 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		mem[i] = s1[i];
 		i++;
 	}
-	while (j <= s2_len)
+	while (j < s2_len)
 	{
 		mem[i + j] = s2[j];
 		j++;
 	}
+	mem[i + j] = '\0';
 	return (mem);
 }
