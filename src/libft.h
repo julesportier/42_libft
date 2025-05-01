@@ -13,9 +13,15 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# define INT_MAX 2147483647
-# define INT_MIN -2147483648
-# define UINT_MAX 4294967295
+# ifndef INT_MAX
+#  define INT_MAX 2147483647
+# endif
+# ifndef INT_MIN
+#  define INT_MIN -2147483648
+# endif
+# ifndef UINT_MAX
+#  define UINT_MAX 4294967295
+# endif
 // Macros for error handling
 # define WRONG_INPUT 1
 # define OVERFLOW 2
