@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstclear.c                                     :+:      :+:    :+:   */
+/*   ft_dlstsplit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 16:31:21 by juportie          #+#    #+#             */
-/*   Updated: 2025/05/06 17:09:01 by juportie         ###   ########.fr       */
+/*   Created: 2025/05/07 09:48:53 by juportie          #+#    #+#             */
+/*   Updated: 2025/05/07 09:57:00 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_dlstclear(t_dlst *lst, void del(void *))
+// Pointers to the original list and to the new "list_b" head must be kept
+// before calling this function.
+void	ft_dlstsplit(t_dlst *lst_b_head)
 {
-	t_dlst	*node;
-
-	while (lst)
+	if (lst_b_head
+		&& lst_b_head->prev != NULL)
 	{
-		node = lst;
-		lst = node->next;
-		del(node->content);
-		free(node);
-		node = NULL;
+		lst_b_head->prev->next = NULL;
+		lst_b_head->prev = NULL;
 	}
 }
