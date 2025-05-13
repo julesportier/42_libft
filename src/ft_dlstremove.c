@@ -12,22 +12,25 @@
 
 #include "libft.h"
 
-void	ft_dlstremove(t_dlst **node, void del(void *))
+void	ft_dlstremove(
+	t_dlst *node,
+	void del_content(void *),
+	void del_node(void *))
 {
 	t_dlst	*prev;
 	t_dlst	*next;
 
-	if (node && *node)
+	if (node)
 	{
-		prev = (*node)->prev;
-		next = (*node)->next;
-		del((*node)->content);
-		free(*node);
-		if (prev == NULL)
-			*node = next;
+		prev = node->prev;
+		next = node->next;
+		if (del_content)
+			del_content(node->content);
+		if (del_node)
+			del_node(node);
 		else
 			prev->next = next;
-		if (next != NULL)
+		if (next)
 			next->prev = prev;
 	}
 }
