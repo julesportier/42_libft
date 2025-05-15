@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:08:24 by juportie          #+#    #+#             */
-/*   Updated: 2025/05/07 09:58:22 by juportie         ###   ########.fr       */
+/*   Updated: 2025/05/15 08:35:50 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,10 @@ void			ft_dlstadd_back(t_dlst **lst, t_dlst *new_node);
 void			ft_dlstadd_front(t_dlst **lst, t_dlst *new_node);
 int				ft_dlstsize(t_dlst *lst);
 void			ft_dlstclear(t_dlst *lst, void del(void *));
-void			ft_dlstremove(t_dlst *node, void del_content(void *), void del_node(void *));
+void			ft_dlstremove(
+					t_dlst *node,
+					void del_content(void *),
+					void del_node(void *));
 void			ft_dlstsplit(t_dlst *lst_b_head);
 void			ft_cdlstadd_back(t_dlst **lst, t_dlst *new_node);
 void			ft_cdlstadd_front(t_dlst **lst, t_dlst *new_node);
