@@ -6,7 +6,7 @@
 #    By: juportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:03:35 by juportie          #+#    #+#              #
-#    Updated: 2025/05/07 09:57:48 by juportie         ###   ########.fr        #
+#    Updated: 2025/05/15 08:36:57 by juportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRC :=	ft_isalpha.c \
 	ft_atoi.c \
 	ft_calloc.c \
 	ft_strdup.c \
+	ft_strdup_s.c \
 	ft_substr.c \
 	ft_strjoin.c \
 	ft_strtrim.c \

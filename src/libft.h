@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:08:24 by juportie          #+#    #+#             */
-/*   Updated: 2025/05/15 08:35:50 by juportie         ###   ########.fr       */
+/*   Updated: 2025/05/15 08:48:17 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ t_list			*ft_lstmap(
 					t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 //ADDED FUNCTIONS
+//	MODIFED LIB FUNCTIONS
+char			*ft_strdup_s(const char *s);
 //	CHECKS
 int				ft_isdigitstr(char *str);
 int				ft_issdigitstr(char *str);
