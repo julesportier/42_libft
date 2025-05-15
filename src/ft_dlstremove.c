@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:36:18 by juportie          #+#    #+#             */
-/*   Updated: 2025/05/06 17:08:49 by juportie         ###   ########.fr       */
+/*   Updated: 2025/05/15 14:32:35 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_dlstremove(
 			del_content(node->content);
 		if (del_node)
 			del_node(node);
-		else
+		if (prev)
 			prev->next = next;
 		if (next)
 			next->prev = prev;
