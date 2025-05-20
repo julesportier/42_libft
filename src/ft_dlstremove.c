@@ -23,7 +23,9 @@ void	ft_dlstremove(
 	if (node)
 	{
 		prev = node->prev;
+		node->prev = NULL;
 		next = node->next;
+		node->next = NULL;
 		if (del_content)
 			del_content(node->content);
 		if (del_node)
