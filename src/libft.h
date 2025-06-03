@@ -6,7 +6,7 @@
 /*   By: juportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:08:24 by juportie          #+#    #+#             */
-/*   Updated: 2025/05/26 15:36:33 by juportie         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:10:51 by juportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ t_dlst			*ft_dlsthead(t_dlst *lst);
 void			ft_dlstadd_back(t_dlst **lst, t_dlst *new_node);
 void			ft_dlstadd_front(t_dlst **lst, t_dlst *new_node);
 void			ft_dlstinsert_next(t_dlst **lst, t_dlst *new_node);
+void			ft_dlstinsert_sublist_next(t_dlst *lst, t_dlst *sublist);
 int				ft_dlstsize(t_dlst *lst);
 void			ft_dlstclear(t_dlst *lst, void del(void *));
 void			ft_dlstremove(
